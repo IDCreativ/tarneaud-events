@@ -1,0 +1,81 @@
+{# {% if websiteData.websiteConfig.event.isLongerThanOneDay == false %} #}
+
+{% if websiteData.websiteConfig.event and websiteData.websiteConfig.event.programmes|length > 0 %}
+
+	{% for chapter in websiteData.websiteConfig.event.chapters %}
+		<div class="chapters-wrapper-event">
+			<div class="h4-wrapper">
+				<h4 class="">
+					<span>{{ chapter.name }}</span>
+				</h4>
+				<div class="after-h4"></div>
+			</div>
+			<div class="description-wrapper">
+				{% if chapter.showTime == 0 %}
+					{% if chapter.dateStart and chapter.dateEnd %}
+						<div class="date">{{ chapter.dateStart ? chapter.dateStart|date('H:i') : '' }}
+							à
+							{{ chapter.dateEnd ? chapter.dateEnd|date('H:i') : '' }}</div>
+					{% endif %}
+				{% endif %}
+				{{ chapter.description|raw }}
+			</div>
+			<div class="chapter-main-wrapper">
+				{% if chapter.showTime == 1 %}
+					{% if chapter.dateStart and chapter.dateEnd %}
+						<div class="chapter-date-wrapper">
+							<span class="chapter-date-start">
+								{{ chapter.dateStart ? chapter.dateStart|date('H:i') : '' }}
+							</span>
+							<span>-</span>
+							<span class="chapter-date-end">
+								{{ chapter.dateEnd ? chapter.dateEnd|date('H:i') : '' }}
+							</span>
+						</div>
+					{% endif %}
+				{% endif %}
+				<div class="chapter-programmes">
+					{% for programme in chapter.programmes %}
+						<div class="col col-12 programme-wrapper">
+							{% if programme.type == 0 %}
+								<div class="info-wrapper">
+									{% if programme.image %}
+										<div class="programme-img-wrapper">
+											<img src="{{ vich_uploader_asset(programme, 'imageFile') }}">
+										</div>
+									{% endif %}
+									<div class="content">
+										<h5 class="">{{ programme.name }}</h5>
+										{{ programme.description|raw }}
+									</div>
+								</div>
+							{% else %}
+								<div class="info-wrapper-image">
+									{% if programme.image %}
+										<div class="programme-img-wrapper">
+											<img src="{{ vich_uploader_asset(programme, 'imageFile') }}">
+										</div>
+									{% endif %}
+								</div>
+							{% endif %}
+							{% if programme.dateStart and programme.dateEnd %}
+								<div class="date-wrapper">
+									<span class="conf-date-start">
+										{{ programme.dateStart ? programme.dateStart|date('H:i') : '' }}
+									</span>
+									<span>-</span>
+									<span class="conf-date-end">
+										{{ programme.dateEnd ? programme.dateEnd|date('H:i') : '' }}
+									</span>
+								</div>
+							{% endif %}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+
+{% endif %}
+
+{# {% endif %} #}

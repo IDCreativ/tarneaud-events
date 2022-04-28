@@ -1,0 +1,38 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Option de sondage - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Option de sondage</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>#</th>
+                        <td>{{ poll_option.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ poll_option.description }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <a href="{{ path('poll_option_index') }}"><i class="fal fa-long-arrow-left me-1"></i>Retour</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

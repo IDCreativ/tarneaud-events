@@ -1,0 +1,56 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Options de sondages - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="d-flex flex-row justify-content-between mb-4">
+                Options de sondages - Liste
+                <span><a class="btn btn-primary" href="{{ path('poll_option_new') }}"><i class="fal fa-plus"></i></a></span>
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    {% if poll_options|length > 0 %}
+                        <table class="table table-bordered align-middle">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Description</th>
+                                    <th>Sondage</th>
+                                    <th>actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for poll_option in poll_options %}
+                                <tr>
+                                    <td>{{ poll_option.id }}</td>
+                                    <td>{{ poll_option.description }}</td>
+                                    <td>{{ poll_option.poll }}</td>
+                                    <td>
+                                        {# <a href="{{ path('poll_option_show', {'id': poll_option.id}) }}"><button class="btn btn-outline-success btn-action"><i class="fal fa-eye fa-fw"></i></button></a> #}
+                                        <a href="{{ path('poll_option_edit', {'id': poll_option.id}) }}"><button class="btn btn-outline-warning btn-action"><i class="fal fa-pen-square fa-fw"></i></button></a>
+                                        {{ include('dashboard/poll_option/_delete_form.html.twig') }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <div class="alert alert-info text-center" role="alert">
+                            Pas d'enregistrement pour le moment.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

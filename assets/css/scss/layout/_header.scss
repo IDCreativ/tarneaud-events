@@ -1,0 +1,243 @@
+// Header
+header {
+    width: 100%;
+    height: auto;
+    background: white;
+    border-bottom: 2px solid $bc-primary;
+    .event-host {
+        margin: 20px auto;
+        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img {
+            height: 110px;
+        }
+        .host-infos {
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-left: none;
+            font-size: 20px;
+            line-height: 24px;
+            text-align: center;
+            .site-title {
+                font-weight: 300;
+                text-align: center;
+            }
+            .event-host-name {
+                font-weight: bold;
+                color: $bc-primary;
+            }
+        }
+    }
+    .site-title {
+        color: $body-color;
+    }
+}
+@media screen and (min-width: 768px) {
+    header {
+        width: 100%;
+        .event-host {
+            margin: 0 auto;
+            padding: 0;
+            height: $header-height;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            .site-title {
+                text-align: left;
+            }
+            .host-infos {
+                margin: 0 0 0 30px;
+                padding: 0 0 0 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                border-left: 2px solid $bc-primary;
+                font-size: 24px;
+                line-height: 30px;
+                text-align: left;
+                height: 110px;
+            }
+        }
+        .site-title {
+            color: $body-color;
+        }
+    }
+}
+@media screen and (min-width: 1200px) {
+    header {
+        position: fixed;
+        top: 0;
+        z-index: 900;
+        .event-host {
+            .host-infos {
+                margin: 0 0 0 70px;
+                padding: 0 0 0 70px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                text-align: left;
+                .site-title {
+                    font-weight: 300;
+                    text-align: left;
+                }
+                .event-host-name {
+                    font-weight: bold;
+                    color: $bc-primary;
+                    text-align: left;
+                }
+            }
+        }
+        .site-title {
+            color: $body-color;
+        }
+    }
+}
+.top-header {
+    position: relative;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    .live-icon {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        width: 110px;
+        background: $bc-primary;
+        img {
+            height: 20px;
+        }
+        span {
+            color: white;
+            font-weight: bold;
+            font-size: 13px;
+            line-height: 13px;
+        }
+    }
+    a {
+        &.linkedin-link {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+        }
+    }
+    .linkedin {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #0e76a8;
+        img {
+            height: 40px;
+            filter: invert(100%);
+        }
+    }
+    .jeu-concours {
+        position: absolute;
+        top: 10px;
+        right: 70px;
+        width: 80px;
+        height: 80px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+}
+@media screen and (min-width: 576px) {
+    .top-header {
+        .live-icon {
+            height: 60px;
+            width: 110px;
+            img {
+                height: 20px;
+            }
+            span {
+                color: white;
+                font-weight: bold;
+                font-size: 13px;
+                line-height: 13px;
+            }
+        }
+        .jeu-concours {
+            width: 100px;
+            height: 100px;
+        }
+    }
+}
+@media screen and (min-width: 768px) {
+    .top-header {
+        .jeu-concours {
+            width: 100px;
+            height: 100px;
+        }
+    }
+}
+@media screen and (min-width: 992px) {
+    .top-header {
+        .jeu-concours {
+            width: 130px;
+            height: 130px;
+        }
+    }
+}
+@media screen and (min-width: 1200px) {
+    .top-header {
+        position: absolute;
+        .jeu-concours {
+            width: 150px;
+            height: 150px;
+            right: 20px;
+        }
+    }
+}
+
+.page-title {
+    position: relative;
+    background: $bc-primary;
+    .heading {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 55px;
+        .line-left, .line-right {
+            width: 20px;
+            height: 2px;
+            background: white;
+        }
+    }
+}
+@media screen and (min-width: 992px) {
+    .page-title {
+        .heading {
+            .line-left, .line-right {
+                width: 120px;
+            }
+        }
+    }
+}
+@media screen and (min-width: 1200px) {
+    .page-title {
+        .heading {
+            .line-left, .line-right {
+                width: 200px;
+            }
+        }
+    }
+}

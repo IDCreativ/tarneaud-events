@@ -1,0 +1,35 @@
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col header-wrapper">
+                <div class="event-host">
+                    <div class="logo-wrapper">
+                    {% if websiteData.websiteConfig.logo %}
+                        <img class="custom-logo" src="{{ vich_uploader_asset(websiteData.websiteConfig, 'logoFile') }}" alt="">
+                    {% else %}
+                        <img class="custom-logo" src="img/default/yourlogo.svg" alt="">
+                    {% endif %}
+                    </div>
+                    <h1 class="host-infos">
+                        <span class="site-title">{{ websiteData.websiteConfig.title }}</span>
+                        <span class="site-subtitle">
+                            {% if websiteData.websiteConfig.event %}
+                                En live le {{ websiteData.websiteConfig.event.dateStart|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY")}} à {{ websiteData.websiteConfig.event.dateStart|date('H')}}H{{ websiteData.websiteConfig.event.dateStart|date('i')}}
+                            {% else %}
+                                Pas d'événement programmé
+                            {% endif %}
+                        </span>
+                    </h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="{{ path('home') }}" title="">Accueil</a></li>
+                        {% if app.user %}
+                        <li>Bienvenue {{ app.user }}</li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

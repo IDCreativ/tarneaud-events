@@ -1,0 +1,22 @@
+// Globals
+@import "globals/_variables.scss";
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "globals/_snippets.scss";
+@import "globals/_shadows.scss";
+
+// Layout
+@import "layout/_main.scss";
+@import "layout/_home.scss";
+@import "layout/_header.scss";
+@import "layout/_footer.scss";
+@import "layout/_aside.scss";
+@import "layout/_navigation.scss";
+
+// Elements
+@import "elements/_countdown.scss";
+@import "elements/_forms.scss";
+@import "elements/_polls.scss";
+@import "elements/_questions.scss";
+@import "elements/_programmes.scss";
+@import "elements/_partners.scss";
+@import "elements/_youtube.scss";

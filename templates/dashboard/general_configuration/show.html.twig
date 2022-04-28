@@ -1,0 +1,77 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Configuration du site{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col d-flex justify-content-between mb-4">
+            <h1>Configuration du site</h1>
+            <div class="">
+                <a class="btn btn-primary" href="{{ path('general_configuration_edit', {'id': general_configuration.id}) }}"><i class="fal fa-pen"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <table class="table table-bordered align-middle">
+                        <tbody>
+                            <tr>
+                                <th>Titre du site</th>
+                                <td>{{ general_configuration.title }}</td>
+                            </tr>
+                            <tr>
+                                <th>Slogan</th>
+                                <td>{{ general_configuration.tagline }}</td>
+                            </tr>
+                            <tr>
+                                <th>Événement</th>
+                                <td>{{ general_configuration.event }}</td>
+                            </tr>
+                            <tr>
+                                <th>Copyright</th>
+                                <td>{{ general_configuration.copyright|raw }}</td>
+                            </tr>
+                            <tr>
+                                <th>Script Google Analytics</th>
+                                <td>
+                                    <!-- Global site tag (gtag.js) - Google Analytics -->
+                                    {{ general_configuration.googleAnalytics }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>LinkedIn</th>
+                                <td><a class="btn btn-outline-success btn-action btn-sm" href="{{ general_configuration.linkedin }}" target="_blank"><i class="fal fa-eye fa-fw"></i></a></td>
+                            </tr>
+                            <tr>
+                                <th>Facebook</th>
+                                <td><a class="btn btn-outline-success btn-action btn-sm" href="{{ general_configuration.facebook }}" target="_blank"><i class="fal fa-eye fa-fw"></i></a></td>
+                            </tr>
+                            <tr>
+                                <th>Twitter</th>
+                                <td><a class="btn btn-outline-success btn-action btn-sm" href="{{ general_configuration.twitter }}" target="_blank"><i class="fal fa-eye fa-fw"></i></a></td>
+                            </tr>
+                            <tr>
+                                <th>Instagram</th>
+                                <td><a class="btn btn-outline-success btn-action btn-sm" href="{{ general_configuration.instagram }}" target="_blank"><i class="fal fa-eye fa-fw"></i></a></td>
+                            </tr>
+                            <tr>
+                                <th>Youtube</th>
+                                <td><a class="btn btn-outline-success btn-action btn-sm" href="{{ general_configuration.youtube }}" target="_blank"><i class="fal fa-eye fa-fw"></i></a></td>
+                            </tr>
+                            <tr>
+                                <th>Site web</th>
+                                <td><a class="btn btn-outline-success btn-action btn-sm" href="{{ general_configuration.website }}" target="_blank"><i class="fal fa-eye fa-fw"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}New PollVote{% endblock %}
+
+{% block body %}
+    <h1>Create new PollVote</h1>
+
+    {{ include('dashboard/poll_vote/_form.html.twig') }}
+
+    <a href="{{ path('poll_vote_index') }}">back to list</a>
+{% endblock %}

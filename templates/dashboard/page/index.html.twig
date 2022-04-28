@@ -1,0 +1,107 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Pages -
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col d-flex justify-content-between mb-4">
+				<h1>Pages - Liste</h1>
+				<div class="">
+					<a class="btn btn-primary" href="{{ path('page_new') }}">
+						<i class="fal fa-plus"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="card shadow-sm">
+					<div class="card-body">
+						{% if pages|length > 0 %}
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Nom</th>
+										<th>Slug</th>
+										<th>Description</th>
+										<th>Contenu</th>
+										<th>Dernière modification</th>
+										<th>Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for page in pages %}
+                                        <tr>
+                                            <td>{{ page.id }}</td>
+                                            <td>{{ page.name }}</td>
+                                            <td>{{ page.slug }}</td>
+                                            <td>
+												<button class="btn btn-outline-success m-1" data-bs-toggle="modal" data-bs-target="#descriptionModal-{{ page.id }}" {% if page.description is null %} disabled{% endif %}
+                                                 >
+													<i class="fal fa-search"></i>
+												</button>
+												<div class="modal fade" id="descriptionModal-{{ page.id }}" tabindex="-1" aria-labelledby="descriptionModal-{{ page.id }}-Label" aria-hidden="true">
+													<div class="modal-dialog modal-xl">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title" id="descriptionModal-{{ page.id }}-Label">{{ page.name }}</h5>
+																<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+															</div>
+															<div class="modal-body">
+																{{ page.description|raw }}
+															</div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fermer</button>
+                                                            </div>
+														</div>
+													</div>
+												</div>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-outline-success m-1" data-bs-toggle="modal" data-bs-target="#contentModal-{{ page.id }}">
+													<i class="fal fa-search"></i>
+												</button>
+												<div class="modal fade" id="contentModal-{{ page.id }}" tabindex="-1" aria-labelledby="contentModal-{{ page.id }}-Label" aria-hidden="true">
+													<div class="modal-dialog modal-fullscreen">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title" id="contentModal-{{ page.id }}-Label">{{ page.name }}</h5>
+																<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+															</div>
+															<div class="modal-body">
+																{{ page.content|raw }}
+															</div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fermer</button>
+                                                            </div>
+														</div>
+													</div>
+												</div>
+                                            </td>
+                                            <td>{{ page.editedAt ? page.editedAt|date('Y-m-d H:i:s') : '' }}</td>
+                                            <td>
+                                                {# <a class="btn btn-outline-success btn-action" href="{{ path('page_show', {'id': page.id}) }}"><i class="fal fa-eye fa-fw"></i></a> #}
+                                                <a class="btn btn-outline-warning btn-action" href="{{ path('page_edit', {'id': page.id}) }}"><i class="fal fa-pen fa-fw"></i></a>
+                                                {{ include('dashboard/page/_delete_form.html.twig') }}
+                                            </td>
+                                        </tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						{% else %}
+							<div class="alert alert-info text-center mb-0" role="alert">
+								Pas d'enregistrement pour le moment.
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

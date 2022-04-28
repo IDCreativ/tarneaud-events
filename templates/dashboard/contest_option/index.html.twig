@@ -1,0 +1,35 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}ContestOption index{% endblock %}
+
+{% block body %}
+    <h1>ContestOption index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>OptionText</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contest_option in contest_options %}
+            <tr>
+                <td>{{ contest_option.id }}</td>
+                <td>{{ contest_option.optionText }}</td>
+                <td>
+                    <a href="{{ path('contest_option_show', {'id': contest_option.id}) }}">show</a>
+                    <a href="{{ path('contest_option_edit', {'id': contest_option.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('contest_option_new') }}">Create new</a>
+{% endblock %}

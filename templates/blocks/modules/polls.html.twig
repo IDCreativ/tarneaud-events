@@ -1,0 +1,37 @@
+{% for poll in polls %}
+    <div class="poll"
+    {% if poll.visibility == true %}
+        style="display: block;" 
+    {% else %}
+        style="display: none;" 
+    {% endif %}
+    id="poll-{{ poll.id }}">
+        <div id="poll-overlay-{{ poll.id }}" class="poll-overlay {% if poll.status == false %}active{% endif %}"></div>
+        <h4>
+            {{ poll.question }}
+        </h4>
+        <p>Votes : <span id="total-vote-{{ poll.id }}">{{ poll.pollVotes|length }}</span></p>
+        <div class="poll-answers" id="poll-options-{{poll.id}}">
+            <fieldset id="fieldset-{{poll.id}}"{% if poll.status == false %} disabled="disabled"{% endif %}>
+            <form id="{{ poll.id }}" method="GET">
+                <input type="hidden" id="poll-id-{{ poll.id }}" value="{{ poll.id }}">
+                {% for option in poll.pollOptions %}
+                    <div class="poll-checkbox">
+                        <input type="radio" id="js-option-{{ option.id }}" name="poll-vote-{{ poll.id }}" value="{{ option.id }}" class="poll-input"
+                        {% if option.isVotedByUser(app.user) %}
+                            checked
+                        {% endif %} >
+                        <label for="js-option-{{ option.id }}">{{ option.description }}</label>
+                    </div>
+                {% endfor %}
+                <a href="{{ path("send_vote") }}" id="{{ poll.id }}" type="submit" class="js-vote-send btn btn-secondary mt-3">Voter</a>
+            </form>
+            </fieldset>
+        </div>
+        <div id="poll-resultats-{{poll.id}}" class="resultats {% if poll.visibility == false %}d-block{% else %}d-none{% endif %}">
+            {% for option in poll.pollOptions %}
+                {{ option }} : <span class="js-option" id="{{ option.id }}"></span><br>
+            {% endfor %}
+        </div>
+    </div>
+{% endfor %}

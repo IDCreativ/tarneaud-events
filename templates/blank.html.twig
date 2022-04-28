@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}
+				{{ websiteData.websiteConfig.title }}
+				|
+				{{ websiteData.websiteConfig.tagline }}
+			{% endblock %}
+		</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <base href="/">
+        {% if websiteData.websiteConfig.logo %}
+            <link rel="icon" href="{{ vich_uploader_asset(websiteData.websiteConfig, 'logoFile') }}">
+        {% else %}
+            <link rel="icon" href="img/default/yourlogo.svg">
+        {% endif %}
+        
+		<meta property="og:title" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}"/>
+		<meta property="og:description" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}"/>
+		<meta property="og:image" content=""/>
+		<meta property="og:image:secure_url" content=""/>
+		<meta property="og:image:type" content="jpg"/>
+		<meta property="og:image:width" content="800"/>
+		<meta property="og:image:height" content="600"/>
+		<meta property="og:image:alt" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}"/>
+		<meta property="og:url" content=""/>
+		<meta property="og:type" content="website">
+		<meta property="og:locale" content="fr_FRANCE">
+		<meta property="og:site_name" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}">
+		<meta name="description" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}">
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+		{% block javascripts %}
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src='https://sk3ud.alwaysdata.net/socket.io/socket.io.js'></script>
+            {{ encore_entry_script_tags('mainJS') }}
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		{% endblock %}
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        {{ websiteData.websiteConfig.googleAnalytics|raw }}
+	</head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col header-wrapper">
+                        <div class="event-host">
+                            <div class="logo-wrapper">
+                            {% if websiteData.websiteConfig.logo %}
+                                <img class="custom-logo" src="{{ vich_uploader_asset(websiteData.websiteConfig, 'logoFile') }}" alt="">
+                            {% else %}
+                                <img class="custom-logo" src="img/default/yourlogo.svg" alt="">
+                            {% endif %}
+                            </div>
+                            <h1 class="host-infos">
+                                <span class="site-title">{{ websiteData.websiteConfig.title }}</span>
+                                <span class="site-subtitle">
+                                    {% if websiteData.websiteConfig.event %}
+                                        En live le {{ websiteData.websiteConfig.event.dateStart|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY")}} à {{ websiteData.websiteConfig.event.dateStart|date('H')}}H
+                                    {% else %}
+                                        Pas d'événement programmé
+                                    {% endif %}
+                                </span>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="flash-messages">      
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    {% if message %}
+                        <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>                                    
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <main id="pages">
+            {% block body %}{% endblock %}
+        </main>
+    </body>
+</html>

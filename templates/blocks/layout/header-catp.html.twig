@@ -1,0 +1,39 @@
+<header>
+	<div class="top-header">
+		<a href="{{ path('home') }}">
+			<div class="live-icon">
+				<img src="img/live-icon.svg" alt="">
+				<span>En live</span>
+			</div>
+		</a>
+		<a class="linkedin-link" href="{{ websiteData.websiteConfig.linkedin }}" target="_blank">
+			<div class="linkedin">
+				<img src="img/linkedin-in-brands.svg" alt="">
+			</div>
+		</a>
+		{# {% if pageConfig.event != null and pageConfig.event.active == 1 %} #}
+		<a href="#jeu-concours">
+			<div class="jeu-concours">
+				<img src="img/picto-jeu.svg" alt="">
+			</div>
+		</a>
+		{# {% endif %} #}
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="event-host">
+					{% if websiteData.websiteConfig.logo %}
+                        <img src="{{ vich_uploader_asset(websiteData.websiteConfig, 'logoFile') }}" alt="">
+                    {% else %}
+                        <img src="img/default/yourlogo.svg" alt="">
+                    {% endif %}
+					<h1 class="host-infos">
+						<span class="site-title">{{ websiteData.websiteConfig.title }}</span>
+						<span class="event-host-name">{{ websiteData.websiteConfig.tagline }}</span>
+					</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>

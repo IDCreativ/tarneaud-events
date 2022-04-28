@@ -1,0 +1,69 @@
+<footer>
+    <div class="social">
+    {% if websiteData.websiteConfig.linkedin %}
+        <a href="{{ websiteData.websiteConfig.linkedin }}" target="_blank">
+            <div class="social-wrapper">
+                <img src="img/linkedin-in-brands.svg" alt="">
+            </div>
+        </a>
+    {% endif %}
+    {% if websiteData.websiteConfig.facebook %}
+        <a href="{{ websiteData.websiteConfig.facebook }}" target="_blank">
+            <div class="social-wrapper">
+                <img src="img/facebook-f-brands.svg" alt="">
+            </div>
+        </a>
+    {% endif %}
+    {% if websiteData.websiteConfig.twitter %}
+        <a href="{{ websiteData.websiteConfig.twitter }}" target="_blank">
+            <div class="social-wrapper">
+                <img src="img/twitter-brands.svg" alt="">
+            </div>
+        </a>
+    {% endif %}
+    {% if websiteData.websiteConfig.instagram %}
+        <a href="{{ websiteData.websiteConfig.instagram }}" target="_blank">
+            <div class="social-wrapper">
+                <img src="img/instagram-brands.svg" alt="">
+            </div>
+        </a>
+    {% endif %}
+    {% if websiteData.websiteConfig.youtube %}
+        <a href="{{ websiteData.websiteConfig.youtube }}" target="_blank">
+            <div class="social-wrapper">
+                <img src="img/youtube-brands.svg" alt="">
+            </div>
+        </a>
+    {% endif %}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col footer-wrapper">
+                <div class="brand-logo">
+                    {% if websiteData.websiteConfig.logo %}
+                        <img class="custom-logo" src="{{ vich_uploader_asset(websiteData.websiteConfig, 'logoFile') }}" alt="">
+                    {% else %}
+                        <img class="custom-logo" src="img/default/yourlogo.svg" alt="">
+                    {% endif %}
+                </div>
+                <div class="copyright">
+                    <div class="text">
+                        {% if websiteData.websiteConfig.copyright %}
+                            {{ websiteData.websiteConfig.copyright|raw }}
+                        {% else %}
+                            © Copyright de la plateforme 2021
+                        {% endif %}
+                    </div>
+                    <div class="links">
+                    {% for page in websitePages.allPages %}
+                        <a href="{{ path('page_single', {'slug': page.slug}) }}">{{ page.name }}</a>
+                    {% endfor %}
+                    </div>
+                </div>
+                <div class="development_by">
+                    <span>Plateforme développée par </span><a href="https://www.blue-com.fr/" target="_blank" title="Agence de communication éco-responsable"><img src="img/logo-blue-com.svg"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

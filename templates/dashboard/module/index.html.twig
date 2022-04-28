@@ -1,0 +1,59 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Modules - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col d-flex justify-content-between mb-4">
+            <h1>Modules - Liste</h1>
+            <div class="">
+                <a class="btn btn-primary" href="{{ path('module_new') }}"><i class="fal fa-plus"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                {% if modules|length > 0 %}
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nom</th>
+                                <th>Slug</th>
+                                <th>Actif</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for module in modules %}
+                            <tr>
+                                <td>{{ module.id }}</td>
+                                <td>{{ module.name }}</td>
+                                <td>{{ module.slug }}</td>
+                                <td>{{ module.active ? 'Oui' : 'Non' }}</td>
+                                <td>{{ module.status ? 'Oui' : 'Non' }}</td>
+                                <td>
+                                    <a class="btn btn-outline-warning btn-action" href="{{ path('module_edit', {'id': module.id}) }}"><i class="fal fa-pen fa-fw"></i></a>
+                                    {{ include('dashboard/module/_delete_form.html.twig') }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <div class="alert alert-info text-center" role="alert">
+                        Pas d'enregistrement pour le moment.
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

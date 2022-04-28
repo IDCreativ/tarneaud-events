@@ -1,0 +1,203 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Contest{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col mb-4">
+            <h1>{{ contest }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ contest.description|raw }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <ul>
+            {% for question in contest.contestQuestions %}
+                <li>{{ question }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col mb-4">
+            <h2>Réponses</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    {# {% if contest_question.contestEntries|length > 0 %} #}
+                        <table id="entries-table" class="table table-bordered align-middle">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Prénom</th>
+                                    <th>Nom</th>
+                                    <th>E-mail</th>
+                                    <th>Téléphone</th>
+                                    <th>Question</th>
+                                    <th>Réponse</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for question in contest.contestQuestions %}
+                                {% for entry in question.contestEntries %}
+                                    <tr>
+                                        <td>
+                                            {{ entry.id }}
+                                        </td>
+                                        <td>
+                                            {{ entry.firstname }}
+                                        </td>
+                                        <td>
+                                            {{ entry.lastname }}
+                                        </td>
+                                        <td>
+                                            {{ entry.email }}
+                                        </td>
+                                        <td>
+                                            {{ entry.telephone }}
+                                        </td>
+                                        <td>
+                                            {{ entry.contestQuestion }}
+                                        </td>
+                                        <td>
+                                            {{ entry.contestOption.optionText }}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {# {% else %}
+                        <div class="alert alert-info text-center mb-0" role="alert">
+                            Pas d'enregistrement pour le moment.
+                        </div>
+                    {% endif %} #}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <a href="{{ path('contest_index') }}"><i class="fal fa-long-arrow-left me-1"></i>Retour</a>
+        </div>
+    </div>
+</div>
+    <script>
+		const columnId = 0;
+		const columnPrenom = 1;
+		const columnNom = 2;
+		const columnEmail = 3;
+		const columnTelephone = 4;
+		const columnQuestion =5;
+		const columnReponse = 6;
+        const tableOrder = [[columnNom, "asc"],[columnId, "asc"]];
+    </script>
+	<script>
+        $(document).ready(function(){
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        });
+		$(document).ready(function () {
+            $('#entries-table').DataTable({
+                "order": tableOrder,
+                "pageLength": 25,
+                "language": {
+                    "sEmptyTable": "Aucune donnée disponible dans le tableau",
+                    "sInfo": "Affichage de l'élément _START_ à _END_ sur _TOTAL_ éléments",
+                    "sInfoEmpty": "Affichage de l'élément 0 à 0 sur 0 élément",
+                    "sInfoFiltered": "(filtré à partir de _MAX_ éléments au total)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ",",
+                    "sLengthMenu": "Afficher _MENU_ éléments",
+                    "sLoadingRecords": "Chargement...",
+                    "sProcessing": "Traitement...",
+                    "sSearch": "Rechercher :",
+                    "sZeroRecords": "Aucun élément correspondant trouvé",
+                    "oPaginate": {
+                        "sFirst": "Premier",
+                        "sLast": "Dernier",
+                        "sNext": "Suivant",
+                        "sPrevious": "Précédent"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": activer pour trier la colonne par ordre croissant",
+                        "sSortDescending": ": activer pour trier la colonne par ordre décroissant"
+                    },
+                    "select": {
+                        "rows": {
+                            "_": "%d lignes sélectionnées",
+                            "0": "Aucune ligne sélectionnée",
+                            "1": "1 ligne sélectionnée"
+                        }
+                    },
+                    "searchPanes": {
+                        "clearMessage": "Effacer tout",
+                        "count": "{total}",
+                        "title": {
+                            _: 'Filtres actifs - %d',
+                            0: 'Aucun filtre actif',
+                            1: '1 filtre actif'
+                        },
+                        "collapse": {
+                            "0": "Volet de recherche",
+                            "_": "Volet de recherche (%d)"
+                        },
+                        "countFiltered": "{shown} ({total})",
+                        "emptyPanes": "Pas de volet de recherche",
+                        "loadMessage": "Chargement du volet de recherche...",
+                        "collapseMessage": "Réduire tout",
+                        "showMessage": "Montrer tout"
+                    }
+                },
+				searchPanes:{
+					
+				},
+                dom: 'Plfrtip',
+				columnDefs: [
+					{
+						searchPanes: {
+							show: false
+						},
+						targets: [columnPrenom]
+					},
+					{
+						searchPanes: {
+							show: false
+						},
+						targets: [columnEmail]
+					},
+					{
+						searchPanes: {
+							show: false
+						},
+						targets: [columnTelephone]
+					},
+					{
+						searchPanes: {
+							show: true
+						},
+						targets: [columnQuestion]
+                    },
+					{
+						searchPanes: {
+							show: true
+						},
+						targets: [columnNom]
+                    }
+				]
+            });
+        });
+	</script>
+{% endblock %}

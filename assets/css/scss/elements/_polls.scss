@@ -1,0 +1,76 @@
+.poll {position: relative;
+    z-index: 0;
+    padding: 25px;
+    font-size: 14px;
+    line-height: 17px;
+    border-bottom: 1px solid $bc-primary;
+    h4 {
+        font-size: 14px;
+        line-height: 17px;
+        color: $bc-secondary;
+        margin: 0 0 20px;
+    }
+    span {
+        color: $body-color;
+        font-weight: 300;
+    }
+}
+.poll-overlay {
+    position: absolute;
+    z-index: 900;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(0);
+    transition: $transition;
+    &.active {
+        background: rgba($color: #000000, $alpha: 0.3);
+        transform: scale(1);
+        transition: $transition;
+        &:hover {
+            cursor: not-allowed;
+        }
+    }
+
+}
+.poll-checkbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 0 25px;
+    label {
+        padding: 0;
+        margin: 0 0 0 10px;
+        color: $body-color;
+        font-weight: 200;
+    }
+    input[type=radio] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+    }
+    input[type=radio] {
+        border-radius: 5px;
+        height: 26px;
+        width: 26px;
+        background: transparent;
+        border: 2px solid $body-color;
+    }
+    input[type=radio]:checked {
+        margin:0px;
+        position: relative;
+        &:before {
+            font-family: "Font Awesome 5 Pro";
+            content: '\f00c';
+            display: block;
+            color: $body-color;
+            font-size: 20px;
+            width: 26px;
+            height: 26px;
+            top: 3px;
+            left: 1px;
+            position: absolute;
+        }
+      }
+}

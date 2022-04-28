@@ -1,0 +1,81 @@
+<section class="jeux-concours">
+	<div id="jeu-concours" class="anchor"></div>
+	{% for jeu in contests %}
+		<div
+			id="jeux-concours-container-{{ moduleJeu.id }}"
+			class="container"
+			{% if moduleJeu.active == true %}
+				style="display: block;"
+			{% else %}
+				style="display: none;"
+			{% endif %}
+		>
+			<div class="row">
+				<div class="col">
+					<div class="h2-wrapper">
+						<h2>
+							{{ jeu.name }}
+						</h2>
+						<div class="after-h2"></div>
+					</div>
+				</div>
+			</div>
+			<div class="row replay-category">
+				<div class="col">
+					{{ jeu.description|raw }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 mx-auto contest-questions-wrapper">
+					<div id="contestStatus-0" class="js-contest-container d-flex justify-content-center {{ jeu.questionStatus == 0 ? "block-visible" : "block-invisible" }}">
+						<div class="alert alert-info text-center text-uppercase mb-0" role="alert">
+							Le jeu-concours débutera le
+							{{ websiteData.websiteConfig.event.dateStart|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY")}}
+							à
+							{{ websiteData.websiteConfig.event.dateStart|date('H')}}H{{ websiteData.websiteConfig.event.dateStart|date('i')}}
+						</div>
+					</div>
+					<div id="contestStatus-1" class="js-contest-container d-block container {{ jeu.questionStatus == 1 ? "block-visible" : "block-invisible" }}">
+						<div class="row">
+						<form>
+						{% for question in jeu.contestQuestions %}
+							<div class="col-12 mb-3">
+								<div class="title mb-3">
+									{{ question.question }}
+								</div>
+								<div class="contest-checkbox options d-flex flex-row justify-content-center align-items-center gap-3">
+									{% for option in question.contestOptions %}
+									<div>
+										<input
+											type="radio"
+											name="contest-answer-{{ question.id }}"
+											value="{{ option.id }}"
+											data-question="{{ question.id }}"
+											id="js-contest-option-{{ option.id }}"
+											class="contest-answer-input"
+										>
+										<label for="js-contest-option-{{ option.id }}">{{ option }}</label>
+									</div>
+									{% endfor %}
+								</div>
+							</div>
+						{% endfor %}
+						</div>
+						<div class="row">
+							<div class="col-12 d-grid">
+								<a href="{{ path("send_answer_contest") }}" type="submit" class="btn btn-primary js-contest-answer-send">Envoyer</a>
+							</div>
+						</div>
+						</form>
+					</div>
+					<div id="contestStatus-2" class="js-contest-container d-flex justify-content-center {{ jeu.questionStatus == 2 ? "block-visible" : "block-invisible" }}">
+						<div class="alert alert-info text-center text-uppercase mb-0" role="alert">
+							Le jeu-concours est terminé.
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	{% endfor %}
+</section>

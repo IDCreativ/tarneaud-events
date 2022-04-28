@@ -1,0 +1,111 @@
+<div class="modal" id="voteModal" tabindex="-1">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Erreur</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<form>
+				<div class="modal-body">
+					<div id="error-alert" class="d-none alert alert-danger" role="alert">
+						<div id="error-form"></div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="modal" id="connexionModal" tabindex="-1">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Se connecter</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<form>
+				<div class="modal-body">
+					<div class="form-group mb-3">
+						<input type="text" class="form-control" id="nom" aria-describedby="nomHelp" placeholder="Nom*">
+					</div>
+					<div class="form-group mb-3">
+						<input type="text" class="form-control" id="prenom" aria-describedby="prenomHelp" placeholder="Prénom*">
+					</div>
+					<div class="form-group mb-3">
+						<input type="text" class="form-control" id="telephone" aria-describedby="telephoneHelp" placeholder="Téléphone*">
+					</div>
+					<div class="form-group mb-3">
+						<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-mail*">
+					</div>
+					<div class="form-group form-check mb-3">
+						<input type="checkbox" class="form-check-input" id="cgv">
+						<label class="form-check-label" for="cgv">J'accepte d'être contacté par le Crédit Agricole si ma question n'a pas pu être traitée en direct*</label>
+					</div>
+					<div id="error-alert" class="d-none alert alert-danger" role="alert">
+						<div id="error-form"></div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+					<button id="js-connect" type="button" class="btn btn-primary">Se connecter</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="vote-sent" data-bs-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="staticBackdropLabel">{{ websiteData.websiteConfig.title }}</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div id="js-vote-sent" class="toast-body">
+					Hello, world! This is a toast message.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{# // Toasts #}
+
+<div class="position-fixed bottom-0 start-50 translate-middle-x p-3">
+	<div id="connected" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+		<div class="d-flex">
+			<div id="js-message-connected" class="toast-body">
+				Hello, world! This is a toast message.
+			</div>
+			<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+		</div>
+	</div>
+</div>
+
+<div class="position-fixed bottom-0 start-50 translate-middle-x p-3">
+	<div id="question-sent" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+		<div class="d-flex">
+			<div id="js-question-sent" class="toast-body">
+				Hello, world! This is a toast message.
+			</div>
+			<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+		</div>
+	</div>
+</div>
+
+{% for question in contests %}
+
+	<div class="position-fixed bottom-0 start-50 translate-middle-x p-3">
+		<div id="contest-answer-sent-{{ question.id }}" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+			<div class="d-flex">
+				<div id="js-contest-answer-sent-{{ question.id }}" class="toast-body">
+					Hello, world! This is a toast message.
+				</div>
+				<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+			</div>
+		</div>
+	</div>
+
+{% endfor %}

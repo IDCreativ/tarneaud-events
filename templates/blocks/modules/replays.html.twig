@@ -1,0 +1,23 @@
+<section class="replays">
+	<div id="replays-container" class="container">
+		<div class="row">
+			<div class="col">
+				<div class="h2-wrapper">
+					<h2>
+						Derniers événements
+					</h2>
+					<div class="after-h2"></div>
+				</div>
+			</div>
+		</div>
+		<div class="row replay-category">
+			{% for video in replays %}
+				<div class="video-replay col-md-4">
+					<div class="embed-responsive embed-responsive-16by9">
+						{{ video.embedCode|raw }}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

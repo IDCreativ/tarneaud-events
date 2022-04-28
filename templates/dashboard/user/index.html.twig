@@ -1,0 +1,125 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Utilisateurs - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col d-flex justify-content-between mb-4">
+            <h1>Utilisateurs - Liste</h1>
+            <div class="">
+                <a class="btn btn-primary" href="{{ path('user_new') }}"><i class="fal fa-plus"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <span class="me-5">
+                <i class="fal fa-user-cog"></i> : Administrateur
+            </span>
+            <span class="me-5">
+                <i class="fal fa-user-tie"></i> : Organisateur
+            </span>
+            <span class="me-5">
+                <i class="fal fa-user"></i> : Utilisateur
+            </span>
+        </div>
+    </div>
+    <hr>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    {% if users|length > 0 %}
+                        <table id="user-table" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Rôles</th>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>E-mail</th>
+                                    <th>Téléphone</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for user in users %}
+                                <tr>
+                                    <td>{{ user.id }}</td>
+                                    <td>
+                                        <div class="d-none">{{ user.roles ? user.roles|json_encode : '' }}</div>
+                                        {% if "ROLE_ADMIN" in user.roles %}
+                                            <i class="fal fa-user-cog fa-2x me-5"></i>
+                                        {% elseif "ROLE_ORGA" in user.roles %}
+                                            <i class="fal fa-user-tie fa-2x me-5"></i>
+                                        {% else %}
+                                            <i class="fal fa-user fa-2x"></i>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ user.lastname }}</td>
+                                    <td>{{ user.firstname }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.telephone }}</td>
+                                    <td>
+                                        {# <a class="btn btn-outline-success btn-action" href="{{ path('user_show', {'id': user.id}) }}"><i class="fal fa-eye fa-fw"></i></a> #}
+                                        <a class="btn btn-outline-warning btn-action" href="{{ path('user_edit', {'id': user.id}) }}"><i class="fal fa-pen fa-fw"></i></a>
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            {{ include('dashboard/user/_delete_form.html.twig') }}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <div class="alert alert-info text-center" role="alert">
+                            Pas d'enregistrement pour le moment.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function() {
+    $('#user-table').DataTable( {
+        "order": [[ 0, "desc" ]],
+        "pageLength": 10,
+        "language": {
+                "sEmptyTable":     "Aucune donnée disponible dans le tableau",
+                "sInfo":           "Affichage de l'élément _START_ à _END_ sur _TOTAL_ éléments",
+                "sInfoEmpty":      "Affichage de l'élément 0 à 0 sur 0 élément",
+                "sInfoFiltered":   "(filtré à partir de _MAX_ éléments au total)",
+                "sInfoPostFix":    "",
+                "sInfoThousands":  ",",
+                "sLengthMenu":     "Afficher _MENU_ éléments",
+                "sLoadingRecords": "Chargement...",
+                "sProcessing":     "Traitement...",
+                "sSearch":         "Rechercher :",
+                "sZeroRecords":    "Aucun élément correspondant trouvé",
+                "oPaginate": {
+                              "sFirst":    "Premier",
+                              "sLast":     "Dernier",
+                              "sNext":     "Suivant",
+                              "sPrevious": "Précédent"
+                              },
+                "oAria": {
+                          "sSortAscending":  ": activer pour trier la colonne par ordre croissant",
+                          "sSortDescending": ": activer pour trier la colonne par ordre décroissant"                  
+                },
+                "select": {
+                          "rows": {
+                            "_": "%d lignes sélectionnées",
+                            "0": "Aucune ligne sélectionnée",
+                            "1": "1 ligne sélectionnée"
+                }  
+      }
+    }
+    } );
+} );
+</script>
+{% endblock %}

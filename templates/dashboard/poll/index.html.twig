@@ -1,0 +1,107 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Sondages - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="d-flex flex-row justify-content-between">
+                Sondages - Liste
+                <span><a class="btn btn-primary" href="{{ path('poll_new') }}"><i class="fal fa-plus"></i></a></span>
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    {% if polls|length > 0 %}
+                        <table class="table table-bordered align-middle">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Question</th>
+                                    <th>Visible</th>
+                                    <th>État</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for poll in polls %}
+                                <tr>
+                                    <td>{{ poll.id }}</td>
+                                    <td>{{ poll.question }}</td>
+                                    <td>{{ poll.visibility == true ? "Visible" : "Non visible" }}</td>
+                                    <td>{{ poll.status == true ? "Actif" : "Inactif" }}</td>
+                                    <td>
+                                        <a class="btn btn-outline-success btn-action" data-bs-toggle="modal" data-bs-target="#showPollId_{{ poll.id }}"><i class="fal fa-eye fa-fw"></i></a>
+                                        {# <a href="{{ path('poll_show', {'id': poll.id}) }}"><button class="btn btn-outline-success btn-action"><i class="fal fa-eye fa-fw"></i></button></a> #}
+                                        <a href="{{ path('poll_edit', {'id': poll.id}) }}"><button class="btn btn-outline-warning btn-action"><i class="fal fa-pen-square fa-fw"></i></button></a>
+                                        {{ include('dashboard/poll/_delete_form.html.twig') }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <div class="alert alert-info text-center" role="alert">
+                            Pas d'enregistrement pour le moment.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>   
+        </div>
+    </div>
+</div>
+<!-- Modals -->
+{% for poll in polls %}
+<div class="modal fade" id="showPollId_{{ poll.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{ poll.question }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row mb-4">
+                <div class="col">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>Réponses possibles</th>
+                                <td>
+                                    {% for option in poll.pollOptions %}
+                                        <span class="mr-2">{{ option.description }}<br></span>
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Nombre de votes</th>
+                                <td>
+                                    {{ poll.pollVotes|length }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                <h4 class="text-reset text-left">Résultats</h4>
+                    {% for resultat in poll.pollVotes %}
+                        <div class="">{{ resultat.user.firstname }} {{ resultat.user.lastname }} - {{ resultat.pollOption.description }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

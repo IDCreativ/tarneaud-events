@@ -1,0 +1,73 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Question - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col mb-4">
+            <h5>id: {{ contest_question.id }} // {{ contest_question.status ? 'ON' : 'OFF' }}</h5>
+            <h1>{{ contest_question }}</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    {% if contest_question.contestEntries|length > 0 %}
+                        <table class="table table-bordered align-middle">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Prénom</th>
+                                    <th>Nom</th>
+                                    <th>E-mail</th>
+                                    <th>Téléphone</th>
+                                    <th>Réponse</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for entry in contest_question.contestEntries %}
+                                <tr>
+                                    <td>
+                                        {{ entry.id }}
+                                    </td>
+                                    <td>
+                                        {{ entry.firstname }}
+                                    </td>
+                                    <td>
+                                        {{ entry.lastname }}
+                                    </td>
+                                    <td>
+                                        {{ entry.email }}
+                                    </td>
+                                    <td>
+                                        {{ entry.telephone }}
+                                    </td>
+                                    <td>
+                                        {{ entry.contestOption.optionText }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <div class="alert alert-info text-center mb-0" role="alert">
+                            Pas d'enregistrement pour le moment.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <a href="{{ path('contest_question_index') }}"><i class="fal fa-long-arrow-left me-1"></i>Retour</a>
+        </div>
+    </div>
+</div> 
+{% endblock %}

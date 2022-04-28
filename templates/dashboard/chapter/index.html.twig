@@ -1,0 +1,56 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Chapitres - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col d-flex justify-content-between mb-4">
+            <h1>Chapitres - Liste</h1>
+            <div class="">
+                <a class="btn btn-primary" href="{{ path('chapter_new') }}"><i class="fal fa-plus"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    {% if chapters|length > 0 %}
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nom</th>
+                                    <th>Événement</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for chapter in chapters %}
+                                <tr>
+                                    <td>{{ chapter.id }}</td>
+                                    <td>{{ chapter.name }}</td>
+                                    <td>{{ chapter.event }}</td>
+                                    <td>
+                                        {# <a class="btn btn-outline-success btn-action" href="{{ path('chapter_show', {'id': chapter.id}) }}"><i class="fal fa-eye fa-fw"></i></a> #}
+                                        <a class="btn btn-outline-warning btn-action" href="{{ path('chapter_edit', {'id': chapter.id}) }}"><i class="fal fa-pen fa-fw"></i></a>
+                                        {{ include('dashboard/chapter/_delete_form.html.twig') }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <div class="alert alert-info text-center" role="alert">
+                            Pas d'enregistrement pour le moment.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

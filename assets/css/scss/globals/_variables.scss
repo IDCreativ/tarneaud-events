@@ -1,0 +1,94 @@
+// Color system
+$body-color: #878787;
+$text-highlight: #999;
+$bc-primary: #973630;
+$bc-secondary: #878787;
+$bc-third: #878787;
+$text-light: #fff;
+$border: #999;
+$border-light: #CECECE;
+$bground-grey: #eaeaea;
+$bground-grey-darker: #EFEFEF;
+$dark-shades: #0d0d0d;
+$darker-shades: #0d0d0d;
+
+$bc-radius: 22px;
+
+
+// Hauteurs
+$header-height: 170px;
+$tabs-height: 130px;
+$questions-form-height: 80px;
+$tab-program-height: calc(100vh - ($header-height + $tabs-height + 2px));
+$tab-poll-height: calc(100vh - ($header-height + $tabs-height + 2px));
+$tab-questions-height: calc(100vh - ($header-height + $questions-form-height + $tabs-height + 2px));
+
+// Mobile hauteurs sidebar
+$mobile-tab-program-height: calc(100vh - ($tabs-height + 2px));
+$mobile-tab-poll-height: calc(100vh - ($tabs-height + 2px));
+$mobile-tab-questions-height: calc(100vh - ($questions-form-height + $tabs-height + 2px));
+
+$shadow: 0px 5px 20px 0px rgba(0,0,0,0.3);
+
+$filter-primary: invert(23%) sepia(15%) saturate(3766%) hue-rotate(322deg) brightness(113%) contrast(95%);
+$filter-secondary: invert(55%) sepia(0%) saturate(835%) hue-rotate(226deg) brightness(96%) contrast(94%);
+$filter-body: invert(55%) sepia(0%) saturate(835%) hue-rotate(226deg) brightness(96%) contrast(94%);
+
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+// font-family: 'Open Sans', sans-serif;
+
+$body-font: 'Open Sans', sans-serif;
+$heading-font: $body-font;
+$tagline-font: $body-font;
+$nav-font: $heading-font;
+
+$transition: all .32s ease-in-out;
+
+$transition-logo: all .8s ease-in-out;
+
+$border-color: $border-light;
+$primary: $bc-primary;
+$secondary: $bc-secondary;
+
+// Header
+$clip-path-width: 60px;
+$clip-path: polygon(0 0, 100% 0, 40% 100%, 0% 100%);
+
+// Clip-path
+$clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+
+// Burger Animation Vars
+$line-color: $dark-shades;
+$line-hover-color: $darker-shades;
+$line-width: 2em;
+$line-spacing: 1em;
+$line-thickness: .06em;
+
+$transition: 0.32s ease-in-out;
+
+// Burger Animation Vars
+$transition-time: 0.4s;
+$rotation: 45deg;
+$translateY: 0.5em;
+$translateX: 0;
+
+.bg-transparent {
+    background: transparent;
+}
+
+// Responsive basique
+
+@media screen and (min-width: 576px) {
+
+}
+@media screen and (min-width: 768px) {
+    
+}
+@media screen and (min-width: 992px) {
+    
+}
+@media screen and (min-width: 1200px) {
+    
+}

@@ -1,0 +1,13 @@
+.filter-primary {
+    filter: $filter-primary;
+}
+
+// Animations
+@keyframes flashReveal {
+    0% {
+        left: -100px;
+    }
+    100% {
+        left: 10px;
+    }
+}

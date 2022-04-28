@@ -1,0 +1,13 @@
+<section id="partenaires">
+    <div class="container">
+        <div class="row">
+            <div class="col partenaires">
+            {% for partner in partners %}
+                {% if partner.featured ==  false %}
+                    <img src="uploads/partners/{{ partner.logo }}" alt="{{ partner.name }}" {% if partner.height %}style="max-height: {{ partner.height }}px;"{% endif %}>
+                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

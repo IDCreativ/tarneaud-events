@@ -1,0 +1,4 @@
+<form class="d-inline" method="post" action="{{ path('poll_vote_delete', {'id': poll_vote.id}) }}" onsubmit="return confirm('Êtes-vous certain de vouloir supprimer cet élément ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ poll_vote.id) }}">
+    <button class="btn btn-outline-danger"><i class="fal fa-trash-alt"></i></button>
+</form>

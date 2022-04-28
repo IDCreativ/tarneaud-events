@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+}
+html { 
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+body {
+    min-height: 100vh;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+.flash-messages {
+    position: absolute;
+    top: 150px;
+    left: 20px;
+    z-index: 100;
+    animation: flashReveal 0.4s ease-in-out;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    // padding: 0 50px 0 0;
+    border-right: 1px solid $border-light;
+    img {
+        height: 50px;
+    }
+}
+
+.table {
+    margin-bottom: 0px;
+}
+
+.vich-image {
+    a {
+        height: 60px;
+        img {
+            height: 60px;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+}

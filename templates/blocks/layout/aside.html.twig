@@ -1,0 +1,75 @@
+<aside id="sidebar">
+    <div id="aside-toggle" class="aside-opened">
+        <i class="far fa-arrow-from-right"></i>
+    </div>
+    <div class="sidebar">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="col nav-block active px-0" id="nav-programme-tab" data-bs-toggle="tab" data-bs-target="#nav-programme" role="tab" aria-controls="nav-programme" aria-selected="false">
+                    <img src="img/list-light.svg" alt="">
+                    <span>Programme</span>
+                </a>
+                {% for module in modulesArray %}
+                    {% if module.slug == "questions-reponses" %}
+                    <a class="col nav-block px-0" id="nav-{{ module.slug }}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{ module.slug }}" role="tab" aria-controls="nav-{{ module.slug }}" aria-selected="true"
+                    {% if module.active == true %}
+                        style="display: flex;"
+                    {% else %}
+                        style="display: none;"
+                    {% endif %}
+                    >
+                        <img src="img/qa.svg" alt="">
+                        <span>Questions / Réponses</span>
+                    </a>
+                    {% elseif module.slug == "sondages" %}
+                    <a class="col nav-block px-0" id="nav-{{ module.slug }}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{ module.slug }}" role="tab" aria-controls="nav-{{ module.slug }}" aria-selected="true"
+                    {% if module.active == true %}
+                        style="display: flex;"
+                    {% else %}
+                        style="display: none;"
+                    {% endif %}
+                    >
+                        <img src="img/poll.svg" alt="">
+                        <span>Sondages</span>
+                    </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-programme" role="tabpanel" aria-labelledby="nav-programme-tab">
+                <div class="tab-content-wrapper-program">
+                    {% include 'blocks/modules/programmes.html.twig' %}
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="nav-sondages" role="tabpanel" aria-labelledby="nav-sondages-tab">
+                <div class="tab-content-wrapper-poll">
+                    {% include 'blocks/modules/polls.html.twig' %}
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="nav-questions-reponses" role="tabpanel" aria-labelledby="nav-questions-reponses-tab">
+                <div id="js-questions-container" class="tab-content-wrapper">
+                    <div id="js-questions">
+                    {% include 'blocks/modules/questions.html.twig' %}
+                    </div>
+                </div>
+                <div class="ask-question">
+                    <div class="qa-form">
+                    {% if websiteData.websiteConfig.event %}
+                        <form action="" class="form-inline">
+                            <fieldset id="fieldset-qr" {% if websiteData.websiteConfig.event.active == 0 %} disabled{% endif %}>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="message" id="js-message" placeholder="Écrivez votre question ici" aria-label="Posez votre question ici" aria-describedby="js-send-question">
+                                    <button id="js-send-question" class="btn send-question" type="submit"><span>Envoyer</span><i class="fal fa-arrow-right"></i></button>
+                                </div>
+                            </fieldset>                                    
+                        </form>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>

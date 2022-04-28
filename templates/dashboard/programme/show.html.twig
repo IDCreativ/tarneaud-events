@@ -1,0 +1,50 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}{{ programme }} - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col mb-4">
+            <h1>{{ programme }}</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>#</th>
+                        <td>{{ programme.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ programme.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ programme.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date de début</th>
+                        <td>{{ programme.dateStart ? programme.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date de fin</th>
+                        <td>{{ programme.dateEnd ? programme.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <a href="{{ path('programme_index') }}"><i class="fal fa-long-arrow-left me-1"></i>Retour</a>
+        </div>
+    </div>
+</div> 
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'pages_base.html.twig' %}
+
+{% block title %}
+	{{ page.name }}
+	-
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {% if page.status > 0 or is_granted('ROLE_ADMIN') %}
+        <main>
+            <section>
+                <div class="container py-5">
+                    <div class="row">
+                        <div class="col">
+                            <h1>{{ page.name }}</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="pb-5">
+                <div class="container py-2">
+                    <div class="row">
+                        <div class="col">
+                            {{ page.content|raw }}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    {% else %}
+        <main>
+            <section>
+                <div class="container py-5">
+                    <div class="row">
+                        <div class="col">
+                            <div class="alert alert-info text-center mb-0" role="alert">
+                                La page n'est pas disponible pour le moment.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}New ContestOption{% endblock %}
+
+{% block body %}
+    <h1>Create new ContestOption</h1>
+
+    {{ include('dashboard/contest_option/_form.html.twig') }}
+
+    <a href="{{ path('contest_option_index') }}">back to list</a>
+{% endblock %}

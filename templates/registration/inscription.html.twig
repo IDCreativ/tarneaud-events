@@ -1,0 +1,20 @@
+{% extends 'pages_base.html.twig' %}
+
+{% block title %}S'enregistrer - {{ parent() }}{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                {% if lastConfiguration.event.eventPassword == null %}
+                    {% include 'forms/inscriptions2.html.twig' %}
+                {% else %}
+                    {% include 'forms/inscriptions1.html.twig' %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+
+section {
+    &#partenaires {
+        border-bottom: 1px solid $border-color;
+        .partenaires {
+            min-height: 60px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            img {
+                width: auto;
+                max-height: 40px;
+                object-fit: contain;
+                padding: 5px;
+            }
+        }
+    }
+}
+@media screen and (min-width: 992px) {
+    section {
+        &#partenaires {
+            .partenaires {
+                min-height: 70px;
+                img {
+                    max-height: 40px;
+                }
+            }
+        }
+    }
+}

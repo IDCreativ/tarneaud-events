@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }} - {{ parent() }}{% endblock %}
+
+{% block body %}
+<main id="front">
+    <section class="live-wrapper">
+        <div id="js-live-container" class="live-container">
+        {% if websiteData.websiteConfig.event != null and websiteData.websiteConfig.event.active == 0 and websiteData.websiteConfig.event.status != 2 %}
+            <div class="waiting-block">
+                <div class="countdown-container">
+                    <h2>{{ websiteData.websiteConfig.event }}</h2>
+                    <h3>RDV {{ websiteData.websiteConfig.event.dateStart|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }} à {{ websiteData.websiteConfig.event.dateStart|date('H')}}H{{ websiteData.websiteConfig.event.dateStart|date('i') }}</h3>
+                    <label id="countdown"></label>
+                </div>
+
+                <img src="img/default/CATP-live-attente.jpg" alt="">
+            </div>
+        {% elseif websiteData.websiteConfig.event != null and websiteData.websiteConfig.event.active == 1 and video %}
+            <div id="video-{{ video.id }}" class="video-container" data-ytid="{{ video.youtubeId }}">
+                <div id="code-video-{{ video.id }}" class="embed-responsive embed-responsive-16by9">
+                    {{ video.embedCode|raw }}
+                </div>
+            </div>
+        {% elseif websiteData.websiteConfig.event == null or websiteData.websiteConfig.event.status == 2 %}
+            <div class="waiting-block">
+                <div id="disclaimer" class="alert alert-info text-center" role="alert">
+                    Événement terminé. Replay bientôt disponible.
+                </div>
+                <img src="img/default/CATP-live-attente.jpg" alt="">
+            </div>
+        {% else %}
+            <div class="waiting-block">
+                <div id="disclaimer" class="alert alert-danger text-center" role="alert">
+                    De retour prochainement.
+                </div>
+                <img src="img/default/CATP-live-attente.jpg" alt="">
+            </div>
+        {% endif %}
+        </div>
+    </section>
+    {% if partners|length > 0 %}
+        {% include 'blocks/modules/partners.html.twig' %}
+    {% endif %}
+    {% include 'blocks/modules/jeux-concours.html.twig' %}
+    {% include 'blocks/modules/replays.html.twig' %}
+</main>
+{% endblock %}

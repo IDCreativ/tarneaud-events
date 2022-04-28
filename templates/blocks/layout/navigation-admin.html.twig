@@ -1,0 +1,93 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-body">
+	<div class="container-fluid">
+		<div class="logo-container me-5 pe-5">
+			{% if websiteData.websiteConfig.logo %}
+				<img class="custom-logo" src="{{ vich_uploader_asset(websiteData.websiteConfig, 'logoFile') }}" alt="">
+			{% else %}
+				<img class="custom-logo" src="img/default/yourlogo.svg" alt="">
+			{% endif %}
+		</div>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('home') }}" target="_blank">Voir le site</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('dashboard') }}">Tableau de bord</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('contest_index') }}">Jeux-concours</a>
+				</li>
+				{% if app.user and is_granted('ROLE_ADMIN') %}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Configurations
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li>
+								<a class="dropdown-item" href="{{ path('event_index') }}">Événements</a>
+								<a class="dropdown-item" href="{{ path('event_date_index') }}">Dates d'événements</a>
+                            </li>
+							<li><hr class="dropdown-divider"></li>
+                            <li>
+								<a class="dropdown-item" href="{{ path('chapter_index') }}">Chapitres</a>
+								<a class="dropdown-item" href="{{ path('programme_index') }}">Programmes</a>
+                            </li>
+							<li><hr class="dropdown-divider"></li>
+                            <li>
+								<a class="dropdown-item" href="{{ path('video_index') }}">Vidéos</a>
+								<a class="dropdown-item" href="{{ path('category_index') }}">Catégories</a>
+							</li>
+							<li><hr class="dropdown-divider"></li>
+							<li>
+								<a class="dropdown-item" href="{{ path('poll_index') }}">Sondages</a>
+								<a class="dropdown-item" href="{{ path('poll_option_index') }}">Options de sondages</a>
+								{# <a class="dropdown-item" href="{{ path('poll_vote_index') }}">Votes</a> #}
+							</li>
+							<li><hr class="dropdown-divider"></li>
+							<li>
+								<a class="dropdown-item" href="{{ path('contest_index') }}">Jeux-concours</a>
+								<a class="dropdown-item" href="{{ path('contest_question_index') }}">Questions</a>
+								<a class="dropdown-item" href="{{ path('contest_option_index') }}">Options</a>
+							</li>
+							<li><hr class="dropdown-divider"></li>
+							<li>
+								{% if websiteData.websiteConfig.id %}
+									<a class="dropdown-item" href="{{ path('general_configuration_show', {'id': websiteData.websiteConfig.id}) }}">Paramètres</a>
+								{% else %}
+									<a class="dropdown-item" href="{{ path('general_configuration_new') }}">Paramètres</a>
+								{% endif %}
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path('module_index') }}">Modules</a>
+								<a class="dropdown-item" href="{{ path('page_index') }}">Pages</a>
+								<a class="dropdown-item" href="{{ path('partners_index') }}">Partenaires</a>
+								<a class="dropdown-item" href="{{ path('venue_index') }}">Emplacements</a>
+							</li>
+							<li><hr class="dropdown-divider"></li>
+							<li>
+								<a class="dropdown-item" href="{{ path('user_index') }}">Utilisateurs</a>
+							</li>
+						</ul>
+					</li>
+				{% endif %}
+			</ul>
+			<ul class="navbar-nav nav-right mb-2 mb-lg-0">
+				{% if app.user %}
+				{# <li class="nav-item"> #}
+					<div class="d-flex align-items-center gap-3">
+						<div class="rounded-avatar">
+							{{ app.user.firstname|slice(0, 1) }}{{ app.user.lastname|slice(0, 1) }}
+						</div>
+						<i class="fal fa-ellipsis-v fa-2x"></i>
+						<a class="nav-link" href="{{ path('app_logout') }}"><i class="fal fa-sign-out-alt fa-2x text-danger"></i></a>
+					</div>
+				{# </li> #}
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+</nav>

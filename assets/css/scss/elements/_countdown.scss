@@ -1,0 +1,104 @@
+label {
+    position: relative;
+    z-index: 10;
+    margin: 0 auto 0;
+}
+
+.countdown-container {
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(10px);
+    padding: 20px 40px;
+    border-radius: 20px;
+    width: 70%;
+    #countdown {
+        font-size: 20px;
+        font-weight: 300;
+        text-transform: uppercase;
+        color: white;
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+        span {
+            font-size: 20px;
+        }
+    }
+    h2 {
+        position: relative;
+        z-index: 2;
+        font-size: 16px;
+        line-height: 30px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin: 0 auto 20px;
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+        color: white;
+        text-align: center;
+    }
+    h3 {
+        color: white;
+    }
+    .car-ended {
+        font-size: 24px;
+        line-height: 30px;
+    }
+}
+
+
+@media screen and (min-width: 576px) {
+    .countdown-container {
+        #countdown {
+            font-size: 30px;
+            span {
+                font-size: 30px;
+                margin: 0 10px 0 2px;
+                &:last-child {
+                    margin: 0;
+                }
+            }
+        }
+        h2 {
+            font-size: 24px;
+            margin: 0 auto 20px;
+        }
+    }
+}
+@media screen and (min-width: 768px) {
+    .countdown-container {
+        width: auto;
+        #countdown {
+            font-size: 30px;
+        }
+        h2 {
+            font-size: 24px;
+            margin: 0 auto 20px;
+        }
+    }
+}
+@media screen and (min-width: 992px) {
+    .countdown-container {
+        #countdown {
+            font-size: 30px;
+        }
+        h2 {
+            font-size: 30px;
+            margin: 0 auto 20px;
+        }
+    }
+}
+@media screen and (min-width: 1200px) {
+    .countdown-container {
+        #countdown {
+            font-size: 30px;
+        }
+        h2 {
+            font-size: 30px;
+            margin: 0 auto 20px;
+        }
+    }
+}

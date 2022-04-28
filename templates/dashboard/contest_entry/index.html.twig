@@ -1,0 +1,41 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}ContestEntry index{% endblock %}
+
+{% block body %}
+    <h1>ContestEntry index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contest_entry in contest_entries %}
+            <tr>
+                <td>{{ contest_entry.id }}</td>
+                <td>{{ contest_entry.firstname }}</td>
+                <td>{{ contest_entry.lastname }}</td>
+                <td>{{ contest_entry.email }}</td>
+                <td>{{ contest_entry.telephone }}</td>
+                <td>
+                    <a href="{{ path('contest_entry_show', {'id': contest_entry.id}) }}">show</a>
+                    <a href="{{ path('contest_entry_edit', {'id': contest_entry.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('contest_entry_new') }}">Create new</a>
+{% endblock %}

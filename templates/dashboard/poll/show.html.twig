@@ -1,0 +1,59 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Sondage - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col">
+        <h1>Sondage</h1>
+    </div>
+</div>
+<div class="row mb-4">
+    <div class="col">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Question</th>
+                    <td>{{ poll.question }}</td>
+                </tr>
+                <tr>
+                    <th>Réponses possibles</th>
+                    <td>
+                        {% for option in poll.pollOptions %}
+                            <span class="mr-2">{{ option.description }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Nombre de votes</th>
+                    <td>
+                        {{ poll.pollVotes|length }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row mb-4">
+    <div class="col">
+    <h4 class="text-reset text-left">Résultats</h4>
+        {% for resultat in poll.pollVotes %}
+            <div class="">{{ resultat.user.firstname }} {{ resultat.user.lastname }} - {{ resultat.pollOption.description }}</div>
+        {% endfor %}
+    </div>
+</div>
+<div class="row py-5">
+    <div class="col d-flex justify-content-between align-items-center">
+        <div class="return-to-list">
+            <a itemprop="url" href="{{ path('poll_index') }}" class="rm-btn-link">
+                <span class="rm-btn-line-holder">
+                    <i class="fal fa-angle-left"></i>
+                    <span class="rm-btn-line"></span>
+                    <span class="rm-btn-text text-uppercase">Retour à la liste</span>
+                    <span class="rm-btn-line-hidden"></span>
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

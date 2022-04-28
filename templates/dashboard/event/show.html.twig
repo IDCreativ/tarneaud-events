@@ -1,0 +1,56 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}{{ event }} - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col mb-4">
+            <h1>{{ event }}</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>#</th>
+                        <td>{{ event.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Actif</th>
+                        <td>{{ event.active ? 'Yes' : 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ event.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ event.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Vidéos</th>
+                        <td>{% for video in event.videos %}
+                            {{video.name}}<br>
+                        {% endfor %}</td>
+                    </tr>
+                    <tr>
+                        <th>Date de début</th>
+                        <td>{{ event.dateStart ? event.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <a href="{{ path('event_index') }}"><i class="fal fa-long-arrow-left me-1"></i>Retour</a>
+        </div>
+    </div>
+</div> 
+{% endblock %}

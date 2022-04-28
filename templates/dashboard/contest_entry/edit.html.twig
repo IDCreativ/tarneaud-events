@@ -1,0 +1,13 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Edit ContestEntry{% endblock %}
+
+{% block body %}
+    <h1>Edit ContestEntry</h1>
+
+    {{ include('dashboard/contest_entry/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('contest_entry_index') }}">back to list</a>
+
+    {{ include('dashboard/contest_entry/_delete_form.html.twig') }}
+{% endblock %}

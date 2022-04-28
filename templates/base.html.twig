@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}
+				{{ websiteData.websiteConfig.title }}
+				|
+				{{ websiteData.websiteConfig.tagline }}
+			{% endblock %}
+		</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <base href="/">
+        {% if websiteData.websiteConfig.logo %}
+            <link rel="icon" href="{{ vich_uploader_asset(websiteData.websiteConfig, 'logoFile') }}">
+        {% else %}
+            <link rel="icon" href="img/default/yourlogo.svg">
+        {% endif %}
+        
+		<meta property="og:title" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}"/>
+		<meta property="og:description" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }} | Votre Patrimoine By CA Touraine Poitou Banque Privée - Un réseau d’experts mobilisé sur la Touraine et le Poitou afin d'accompagner vos projets."/>
+		<meta property="og:image" content="img/default/CATP-live-attente.jpg"/>
+		<meta property="og:image:secure_url" content="img/default/CATP-live-attente.jpg"/>
+		<meta property="og:image:type" content="jpg"/>
+		<meta property="og:image:width" content="1920"/>
+		<meta property="og:image:height" content="1080"/>
+		<meta property="og:image:alt" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}"/>
+		<meta property="og:url" content=""/>
+		<meta property="og:type" content="website">
+		<meta property="og:locale" content="fr_FRANCE">
+		<meta property="og:site_name" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}">
+		<meta name="description" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}">
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+		{% block javascripts %}
+        <script src="/js/somejs.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+			{{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('mainJS') }}
+            {{ encore_entry_script_tags('mainWS') }}
+		{% endblock %}
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        {{ websiteData.websiteConfig.googleAnalytics|raw }}
+	</head>
+{% if websiteData.websiteConfig.event %}
+    <body{% if websiteData.websiteConfig.event.active == 1 %} class="eventOn"{% endif %}>
+{% endif %}
+        {% include 'blocks/layout/header-catp.html.twig' %}
+        <div class="flash-messages">      
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    {% if message %}
+                        <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>                                    
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <div id="main-container" class="global-container aside-opened">
+            {% block body %}{% endblock %}
+            {% include 'blocks/layout/footer.html.twig' %}
+        </div>
+        {% include 'blocks/layout/aside.html.twig' %}
+        {% if app.request.get('_route') == 'home' %}
+            {% include 'blocks/modals.html.twig' %}
+        {% endif %}
+    </body>
+</html>

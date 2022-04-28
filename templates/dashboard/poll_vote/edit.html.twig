@@ -1,0 +1,30 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Modifier le vote - {{ parent() }}{% endblock %}
+
+{% block body %}
+ <div class="row">
+    <div class="col">
+        <h1>Modifier le vote</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        {{ include('dashboard/poll_vote/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
+    </div>
+</div>
+<div class="row py-5">
+    <div class="col d-flex justify-content-between align-items-center">
+        <div class="return-to-list">
+            <a itemprop="url" href="{{ path('poll_vote_index') }}" class="rm-btn-link">
+                <span class="rm-btn-line-holder">
+                    <i class="fal fa-angle-left"></i>
+                    <span class="rm-btn-line"></span>
+                    <span class="rm-btn-text text-uppercase">Retour à la liste</span>
+                    <span class="rm-btn-line-hidden"></span>
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

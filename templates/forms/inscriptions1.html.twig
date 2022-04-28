@@ -1,0 +1,57 @@
+<div class="card">
+    <div class="card-header">
+        Je m'inscris ou <a href="{{ path('app_login') }}">je me connecte</a>
+    </div>
+    <div class="card-body">
+        {{ form_start(registrationForm) }}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <div class="form-error">
+                        {{ form_errors(registrationForm.lastname) }}
+                    </div>
+                    {{form_row(registrationForm.lastname, {'label': 'Nom'}) }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <div class="form-error">
+                        {{ form_errors(registrationForm.firstname) }}
+                    </div>
+                    {{form_row(registrationForm.firstname, {'label': 'Prénom'}) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    {{form_row(registrationForm.email, {'label': 'E-mail'}) }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <div class="form-error">
+                        {{ form_errors(registrationForm.telephone) }}
+                    </div>
+                    {{form_row(registrationForm.telephone, {'label': 'Téléphone'}) }}
+                </div>
+            </div>
+        </div>
+        {# <div class="row">
+            <div class="col-12">
+                <div class="form-group mb-3">
+                    <div class="form-error">
+                        {{ form_errors(registrationForm.password) }}
+                    </div>
+                    {{form_row(registrationForm.password, {'label': 'Mot de passe'}) }}
+                </div>
+            </div>
+        </div> #}
+        <div><small class="form-text text-muted mt-4"><a href="{{ path('page_single', {'slug': 'mentions-legales'}) }}" title="Condition d'utilisation" target="_blank">Lire les conditions générales d'utilisation</a></small></div>
+            {{ form_row(registrationForm.agreeTerms, {
+                label: 'Accepter les CGU'
+            }) }}
+        <button class="btn btn-primary">{{ button_label|default('S\'enregistrer') }}</button>
+        {{ form_end(registrationForm) }}
+    </div>
+</div>

@@ -1,0 +1,19 @@
+{% for question in questions %}
+    <div class="question"
+    {% if question.status == true %}
+        style="display: block;" 
+    {% else %}
+        style="display: none;" 
+    {% endif %}
+    id="question-{{ question.id }}">
+        <h4>{{ question.firstname }} {{ question.lastname|slice(0, 1) }}.</h4>
+        <span>{{ question.question }}</span>
+        <div id="js-answers-{{ question.id }}">
+        {% if question.answers %}
+            {% for answer in question.answers %}
+                <div id="answer-{{ answer.id }}" class="answer">{{ answer }}</div>
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+{% endfor %}

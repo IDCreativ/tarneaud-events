@@ -1,0 +1,60 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Événements - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col d-flex justify-content-between mb-4">
+            <h1>Événements - Liste</h1>
+            <div class="">
+                <a class="btn btn-primary" href="{{ path('event_new') }}"><i class="fal fa-plus"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    {% if events|length > 0 %}
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nom</th>
+                                    <th>Date de début</th>
+                                    <th>Date de fin</th>
+                                    <th>En cours</th>
+                                    <th>actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for event in events %}
+                                <tr>
+                                    <td>{{ event.id }}</td>
+                                    <td>{{ event.name }}</td>
+                                    <td>{{ event.dateStart ? event.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+                                    <td>{{ event.dateEnd ? event.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+                                    <td>{{ event.active ? 'Oui' : 'Non' }}</td>
+                                    <td>
+                                        {# <a class="btn btn-outline-success btn-action" href="{{ path('event_show', {'id': event.id}) }}"><i class="fal fa-eye fa-fw"></i></a> #}
+                                        <a class="btn btn-outline-warning btn-action" href="{{ path('event_edit', {'id': event.id}) }}"><i class="fal fa-pen fa-fw"></i></a>
+                                        {{ include('dashboard/event/_delete_form.html.twig') }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <div class="alert alert-info text-center mb-0" role="alert">
+                            Pas d'enregistrement pour le moment.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

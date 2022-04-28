@@ -1,0 +1,35 @@
+<div class="row">
+	{% for jeu in contests %}
+		<div class="col-12 d-flex justify-content-between align-items-center mb-1">
+			<h5>{{ jeu }}</h5>
+			<div class="action-btn d-flex justify-content-end align-items-center gap-1">
+				<div class="form-check form-switch">
+					<input class="form-check-input js-contest-switch" type="checkbox" id="js-contest-switch-{{ jeu.id }}" data-contest="{{ jeu.id }}" {% if jeu.questionStatus == 1 %} checked {% endif %}>
+				</div>
+				<a class="js-contest-switch-off" id="js-contest-switch-off-{{ jeu.id }}" data-contest="{{ jeu.id }}"><i class="fal fa-power-off"></i></a>
+			</div>
+		</div>
+		{% for question in jeu.contestQuestions %}
+			<div class="col-12">
+				<div class="poll-card card mb-2">
+					<div class="card-body d-flex justify-content-between align-items-center">
+						<div class="poll-name me-3">
+							{{ question }}
+						</div>
+						<div class="poll-actions">
+							{% if question.status == 1 %}
+								<a class="js-visibility btn btn-sm btn-success js-contest-question-switch" id="contest-question-visible-{{ question.id }}" data-visible="true" data-question="{{ question.id }}">
+									<i class="fal fa-eye"></i>
+								</a>
+							{% else %}
+								<a class="js-visibility btn btn-sm btn-outline-dark js-contest-question-switch" id="contest-question-visible-{{ question.id }}" data-visible="false" data-question="{{ question.id }}">
+									<i class="fal fa-eye-slash"></i>
+								</a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	{% endfor %}
+</div>

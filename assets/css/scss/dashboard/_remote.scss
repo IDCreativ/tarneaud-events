@@ -1,0 +1,63 @@
+.poll-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+.poll-actions, .video-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        margin: 0 10px 0 0;
+        text-decoration: none;
+        &:last-child {
+            margin: 0;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+        &.text-disabled {
+            color: $body-color;
+            transition: $transition;
+            &:hover {
+                color: $bc-primary;
+                transition: $transition;
+            }
+        }
+    }
+}
+
+.module-name {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    img {
+        height: 20px;
+        width: auto;
+        object-fit: contain;
+        filter: $filter-body;
+    }
+}
+
+.interaction-card {
+    .nav-link {
+        img {
+            height: 20px;
+            width: auto;
+            object-fit: contain;
+        }
+        &.active {
+            img {
+                filter: invert(100%);
+            }
+        }
+    }
+}

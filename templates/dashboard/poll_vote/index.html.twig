@@ -1,0 +1,48 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Votes - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col">
+        <h1 class="d-flex flex-row justify-content-between">
+            Votes - Liste
+            <span><a class="btn btn-primary" href="{{ path('poll_vote_new') }}">Créer un vote</a></span>
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <table class="table table-bordered align-middle">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Votant</th>
+                <th>Sondage</th>
+                <th>Réponse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for poll_vote in poll_votes %}
+            <tr>
+                <td>{{ poll_vote.id }}</td>
+                <td>{{ poll_vote.user }}</td>
+                <td>{{ poll_vote.poll }}</td>
+                <td>{{ poll_vote.pollOption }} - {{ poll_vote.pollOption.id }}</td>
+                <td>
+                    <a href="{{ path('poll_vote_show', {'id': poll_vote.id}) }}"><button class="btn btn-outline-success btn-action"><i class="fal fa-eye fa-fw"></i></button></a>
+                    <a href="{{ path('poll_vote_edit', {'id': poll_vote.id}) }}"><button class="btn btn-outline-warning btn-action"><i class="fal fa-pen-square fa-fw"></i></button></a>
+                    {{ include('dashboard/poll_vote/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+{% endblock %}

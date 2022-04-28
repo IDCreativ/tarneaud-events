@@ -1,0 +1,179 @@
+.event-title {
+    position: relative;
+    z-index: 1;
+    padding: 0 15px;
+    min-height: 50px;
+    width: 100%;
+    background: $bc-primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        color: white;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 30px;
+        text-transform: uppercase;
+        background: $bc-primary;
+        padding: 0 20px;
+        margin: 0;
+        text-align: center;
+    }
+    .after-h1 {
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 1px;
+        width: calc(100% - 30px);
+        background: white;
+    }
+}
+.live-wrapper {
+    margin: 0;
+    height: 100%;
+    background: $bground-grey;
+    .row, .col, .container-fluid {
+        height: 100%;
+    }
+    .row {
+        padding: 0;
+        .col {
+            padding: 0;
+        }
+    }
+    .live-container {
+        position: relative;
+        z-index: 0;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        label {
+            position: relative;
+            z-index: 10;
+        }
+        .waiting-block {
+            padding: 0;
+            position: relative;
+            z-index: 0;
+            height: 100%;
+            width: 100%;
+            
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+            #disclaimer {
+                position: relative;
+                z-index: 2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        .no-event {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin: 20px 30px;
+            box-sizing: border-box;
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .live-wrapper {
+        .live-container {
+            flex-direction: row;
+        }
+    }
+}
+
+// Section replays
+.replays, .jeux-concours {
+    position: relative;
+    margin: 50px 0;
+    .h2-wrapper {
+        position: relative;
+        z-index: 1;
+        height: 50px;
+        h2 {
+            display: inline;
+            text-align: left;
+            margin: 0 0 20px;
+            padding: 0 20px 0 0;
+            height: 50px;
+            line-height: 50px;
+            font-size: 24px;
+            font-weight: 300;
+            background: white;
+        }
+        .after-h2 {
+            position: absolute;
+            z-index: -1;
+            height: 1px;
+            width: 100%;
+            top: 30px;
+            left: 0;
+            background: $bc-primary;
+        }
+    }
+    .replay-category {
+        padding: 20px 0;
+        row-gap: 20px;
+    }
+    h3 {
+        font-size: 20px;
+        line-height: 30px;
+        padding: 0 0 0 15px;
+        border-left: 2px solid $bc-secondary;
+    }
+}
+
+.not-verified {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+iframe {
+    button.ytp-large-play-button.ytp-button {
+        display: none;
+    }
+}
+
+.contest-questions-wrapper {
+    position: relative;
+    overflow: hidden;
+    .js-contest-container {
+        width: 100%;
+        height: auto;
+        transition: $transition;
+        &.block-visible {
+            opacity: 1;
+            height: auto;
+            transform: scale(1);
+            padding: 1rem 1rem;
+        }
+        &.block-invisible {
+            opacity: 0;
+            height: 0;
+            transform: scale(0);
+            padding: 0;
+        }
+    }
+}

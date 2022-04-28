@@ -1,0 +1,122 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Programme -
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col d-flex justify-content-between mb-4">
+				<h1>Programme - Liste</h1>
+				<div class="">
+					<a class="btn btn-primary" href="{{ path('programme_new') }}">
+						<i class="fal fa-plus"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="card shadow-sm">
+					<div class="card-body">
+						{% if programmes|length > 0 %}
+							<table id="table-programmes" class="table table-bordered align-middle">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>
+											<i class="fal fa-image"></i>
+										</th>
+										<th>Nom</th>
+										<th>Description</th>
+										<th>Date de début</th>
+										<th>Date de fin</th>
+										<th>Événement</th>
+										<th>Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for programme in programmes %}
+										<tr>
+											<td>{{ programme.id }}</td>
+											<td>
+												{% if programme.image %}
+													<img style="width: 50px;" src="{{ vich_uploader_asset(programme, 'imageFile') }}" alt="">
+												{% endif %}
+											</td>
+											<td>{{ programme.name }}</td>
+											<td>
+                                                {% if programme.type == 0 %}
+                                                    {{ programme.description|raw }}
+                                                {% elseif  programme.type == 1 %}
+                                                    <div class="alert alert-info text-center mb-0" role="alert">
+                                                        Block image seule
+                                                    </div>
+                                                {% endif %}
+                                            </td>
+											<td>{{ programme.dateStart ? programme.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+											<td>{{ programme.dateEnd ? programme.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+											<td>{{ programme.event }}</td>
+											<td>
+												{# <a class="btn btn-outline-success btn-action" href="{{ path('programme_show', {'id': programme.id}) }}"><i class="fal fa-eye fa-fw"></i></a> #}
+												<a class="btn btn-outline-warning btn-action" href="{{ path('programme_edit', {'id': programme.id}) }}">
+													<i class="fal fa-pen fa-fw"></i>
+												</a>
+												{{ include('dashboard/programme/_delete_form.html.twig') }}
+											</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						{% else %}
+							<div class="alert alert-info text-center" role="alert">
+								Pas d'enregistrement pour le moment.
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script>
+$(document).ready(function() {
+    $('#table-programmes').DataTable( {
+        "order": [[ 0, "desc" ]],
+        "pageLength": 10,
+        "language": {
+            "sEmptyTable":     "Aucune donnée disponible dans le tableau",
+            "sInfo":           "Affichage de l'élément _START_ à _END_ sur _TOTAL_ éléments",
+            "sInfoEmpty":      "Affichage de l'élément 0 à 0 sur 0 élément",
+            "sInfoFiltered":   "(filtré à partir de _MAX_ éléments au total)",
+            "sInfoPostFix":    "",
+            "sInfoThousands":  ",",
+            "sLengthMenu":     "Afficher _MENU_ éléments",
+            "sLoadingRecords": "Chargement...",
+            "sProcessing":     "Traitement...",
+            "sSearch":         "Rechercher :",
+            "sZeroRecords":    "Aucun élément correspondant trouvé",
+            "oPaginate": {
+                "sFirst":    "Premier",
+                "sLast":     "Dernier",
+                "sNext":     "Suivant",
+                "sPrevious": "Précédent"
+            },
+            "oAria": {
+                "sSortAscending":  ": activer pour trier la colonne par ordre croissant",
+                "sSortDescending": ": activer pour trier la colonne par ordre décroissant"                  
+            },
+            "select": {
+                "rows": {
+                    "_": "%d lignes sélectionnées",
+                    "0": "Aucune ligne sélectionnée",
+                    "1": "1 ligne sélectionnée"
+                }  
+            }
+        }
+    });
+});
+</script>
+{% endblock %}

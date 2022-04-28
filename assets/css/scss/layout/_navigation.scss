@@ -1,0 +1,10 @@
+.rounded-avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: $bground-grey;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

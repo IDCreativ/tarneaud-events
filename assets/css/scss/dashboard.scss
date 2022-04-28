@@ -1,0 +1,11 @@
+
+// Globals
+@import "globals/_variables.scss";
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "globals/_snippets.scss";
+@import "globals/_shadows.scss";
+
+// Layout
+@import "dashboard/_dashboard.scss";
+@import "dashboard/_remote.scss";
+@import "layout/_navigation.scss";
