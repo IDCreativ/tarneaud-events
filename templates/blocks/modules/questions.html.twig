@@ -6,7 +6,7 @@
         style="display: none;" 
     {% endif %}
     id="question-{{ question.id }}">
-        <h4>{{ question.firstname }} {{ question.lastname|slice(0, 1) }}.</h4>
+        {# <h4>{{ question.firstname }} {{ question.lastname|slice(0, 1) }}.</h4> #}
         <span>{{ question.question }}</span>
         <div id="js-answers-{{ question.id }}">
         {% if question.answers %}

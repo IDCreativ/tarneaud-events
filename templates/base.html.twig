@@ -11,16 +11,10 @@
 		</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <base href="/">
-        {% if websiteData.websiteConfig.logo %}
-            <link rel="icon" href="{{ vich_uploader_asset(websiteData.websiteConfig, 'logoFile') }}">
-        {% else %}
-            <link rel="icon" href="img/default/yourlogo.svg">
-        {% endif %}
-        
-		<meta property="og:title" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}"/>
+        <meta property="og:title" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}"/>
 		<meta property="og:description" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }} | Votre Patrimoine By CA Touraine Poitou Banque Privée - Un réseau d’experts mobilisé sur la Touraine et le Poitou afin d'accompagner vos projets."/>
-		<meta property="og:image" content="img/default/CATP-live-attente.jpg"/>
-		<meta property="og:image:secure_url" content="img/default/CATP-live-attente.jpg"/>
+		<meta property="og:image" content="img/default/waiting-bg.jpg"/>
+		<meta property="og:image:secure_url" content="img/default/waiting-bg.jpg"/>
 		<meta property="og:image:type" content="jpg"/>
 		<meta property="og:image:width" content="1920"/>
 		<meta property="og:image:height" content="1080"/>
@@ -30,6 +24,13 @@
 		<meta property="og:locale" content="fr_FRANCE">
 		<meta property="og:site_name" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}">
 		<meta name="description" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="theme-color" content="#ffffff">
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
@@ -47,7 +48,7 @@
 {% if websiteData.websiteConfig.event %}
     <body{% if websiteData.websiteConfig.event.active == 1 %} class="eventOn"{% endif %}>
 {% endif %}
-        {% include 'blocks/layout/header-catp.html.twig' %}
+        {% include 'blocks/layout/header-client.html.twig' %}
         <div class="flash-messages">      
             {% for label, messages in app.flashes %}
                 {% for message in messages %}

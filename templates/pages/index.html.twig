@@ -14,7 +14,7 @@
                     <label id="countdown"></label>
                 </div>
 
-                <img src="img/default/CATP-live-attente.jpg" alt="">
+                <img src="img/default/waiting-bg.jpg" alt="">
             </div>
         {% elseif websiteData.websiteConfig.event != null and websiteData.websiteConfig.event.active == 1 and video %}
             <div id="video-{{ video.id }}" class="video-container" data-ytid="{{ video.youtubeId }}">
@@ -27,14 +27,14 @@
                 <div id="disclaimer" class="alert alert-info text-center" role="alert">
                     Événement terminé. Replay bientôt disponible.
                 </div>
-                <img src="img/default/CATP-live-attente.jpg" alt="">
+                <img src="img/default/waiting-bg.jpg" alt="">
             </div>
         {% else %}
             <div class="waiting-block">
                 <div id="disclaimer" class="alert alert-danger text-center" role="alert">
                     De retour prochainement.
                 </div>
-                <img src="img/default/CATP-live-attente.jpg" alt="">
+                <img src="img/default/waiting-bg.jpg" alt="">
             </div>
         {% endif %}
         </div>
@@ -42,7 +42,7 @@
     {% if partners|length > 0 %}
         {% include 'blocks/modules/partners.html.twig' %}
     {% endif %}
-    {% include 'blocks/modules/jeux-concours.html.twig' %}
-    {% include 'blocks/modules/replays.html.twig' %}
+    {# {% include 'blocks/modules/jeux-concours.html.twig' %} #}
+    {# {% include 'blocks/modules/replays.html.twig' %} #}
 </main>
 {% endblock %}

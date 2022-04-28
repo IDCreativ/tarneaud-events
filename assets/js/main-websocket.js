@@ -3,22 +3,25 @@ import axios from "axios";
 import io from "socket.io-client";
 
 function initializeMyWS() {
-	checkConnexion();
+	// checkConnexion();
 }
 
 const checkConnexion = function () {
-	if (
-		cookies.getCookie("user-nom") != "" &&
-		cookies.getCookie("user-prenom") != "" &&
-		cookies.getCookie("user-email") != "" &&
-		cookies.getCookie("user-telephone") != ""
-	) {
-		console.log("Utilisateur connecté");
-		return true;
-	} else {
-		console.log("Utilisateur non connecté");
-		return false;
-	}
+	// if (
+	// 	cookies.getCookie("user-nom") != "" &&
+	// 	cookies.getCookie("user-prenom") != "" &&
+	// 	cookies.getCookie("user-email") != "" &&
+	// 	cookies.getCookie("user-telephone") != ""
+	// ) {
+	// 	console.log("Utilisateur connecté");
+	// 	return true;
+	// } else {
+	// 	console.log("Utilisateur non connecté");
+	// 	return false;
+	// }
+
+	// On ne check pas les cookies
+	return true;
 };
 
 initializeMyWS();
@@ -54,14 +57,20 @@ if (button) {
 		eventClick.preventDefault();
 		if (checkConnexion() == false) {
 			alert("Vous devez être connecté !");
-			cookies.checkCookie();
+			// cookies.checkCookie();
 		} else if (input.value != "") {
 			var msgObj = JSON.stringify({
 				questionSent: input.value,
-				questionPrenom: cookies.getCookie("user-prenom"),
-				questionNom: cookies.getCookie("user-nom"),
-				questionEmail: cookies.getCookie("user-email"),
-				questionTelephone: cookies.getCookie("user-telephone"),
+				// questionPrenom: cookies.getCookie("user-prenom"),
+				// questionNom: cookies.getCookie("user-nom"),
+				// questionEmail: cookies.getCookie("user-email"),
+				// questionTelephone: cookies.getCookie("user-telephone"),
+
+				questionPrenom: "Prénom",
+				questionNom: "Nom",
+				questionEmail: "Email",
+				questionTelephone: "Téléphone",
+
 			});
 			recordQuestion(msgObj);
 			input.value = "";
@@ -95,11 +104,7 @@ var receiveQuestion = function (obj) {
 			questionStatus +
 			";' id='question-" +
 			objReceived.questionId +
-			"'><h4>" +
-			objReceived.questionPrenom +
-			" " +
-			objReceived.questionNom.substring(0, 1) +
-			".</h4><span>" +
+			"'><span>" +
 			objReceived.questionSent +
 			"</span><div id='js-answers-" +
 			objReceived.questionId +
@@ -259,7 +264,7 @@ var changeEventStatus = function (eventStatus) {
                 <div id="disclaimer" class="alert alert-danger text-center" role="alert">
                     De retour prochainement.
                 </div>
-                <img src="img/default/CATP-live-attente.jpg" alt="">
+                <img src="img/default/waiting-bg.jpg" alt="">
             </div>
         `;
 	} else {
@@ -274,7 +279,7 @@ var changeEventStatus = function (eventStatus) {
                 <div id="disclaimer" class="alert alert-danger text-center" role="alert">
                     De retour prochainement.
                 </div>
-                <img src="img/default/CATP-live-attente.jpg" alt="">
+                <img src="img/default/waiting-bg.jpg" alt="">
             </div>
         `;
 	}
@@ -314,7 +319,7 @@ var changeVideoStatus = function (videoStatus) {
                 <div id="disclaimer" class="alert alert-danger text-center" role="alert">
                     De retour prochainement.
                 </div>
-                <img src="img/default/CATP-live-attente.jpg" alt="">
+                <img src="img/default/waiting-bg.jpg" alt="">
             </div>
         `;
 	} else {
@@ -512,10 +517,10 @@ function sendContestAnswer(event) {
 				.post(url, {
 					contestOption: input.value,
 					contestQuestion: input.dataset.question,
-					firstname: cookies.getCookie("user-prenom"),
-					lastname: cookies.getCookie("user-nom"),
-					email: cookies.getCookie("user-email"),
-					telephone: cookies.getCookie("user-telephone"),
+					// firstname: cookies.getCookie("user-prenom"),
+					// lastname: cookies.getCookie("user-nom"),
+					// email: cookies.getCookie("user-email"),
+					// telephone: cookies.getCookie("user-telephone"),
 				})
 				.then((response) => {
 					if (response.data.code == 200) {

@@ -13,7 +13,7 @@ function initializeMyJS() {
 			console.log("response.data", response.data);
 			if(response.data.event && response.data.event.public === false) {
 				console.log(response.data.event );
-				cookies.checkCookie();
+				// cookies.checkCookie();
 			}
 		})
 		.catch(function (error) {
