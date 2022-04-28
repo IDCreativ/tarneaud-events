@@ -11,7 +11,7 @@ header {
         flex-direction: column;
         align-items: center;
         img {
-            height: 110px;
+            height: 80px;
         }
         .host-infos {
             margin: 0;
@@ -64,6 +64,19 @@ header {
                 line-height: 30px;
                 text-align: left;
                 height: 110px;
+            }
+        }
+        .site-title {
+            color: $body-color;
+        }
+    }
+}
+@media screen and (min-width: 992px) {
+    header {
+        width: 100%;
+        .event-host {
+            img {
+                height: 100px;
             }
         }
         .site-title {

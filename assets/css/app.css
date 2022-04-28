@@ -11631,7 +11631,7 @@ header .event-host {
   align-items: center;
 }
 header .event-host img {
-  height: 110px;
+  height: 80px;
 }
 header .event-host .host-infos {
   margin: 0;
@@ -11685,6 +11685,17 @@ header .site-title {
     line-height: 30px;
     text-align: left;
     height: 110px;
+  }
+  header .site-title {
+    color: #878787;
+  }
+}
+@media screen and (min-width: 992px) {
+  header {
+    width: 100%;
+  }
+  header .event-host img {
+    height: 100px;
   }
   header .site-title {
     color: #878787;
