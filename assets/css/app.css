@@ -12015,7 +12015,7 @@ footer .development_by img {
   footer .footer-wrapper {
     flex-direction: row;
     height: 100px;
-    padding: 0;
+    padding: 0 15px;
   }
   footer .copyright {
     position: absolute;
@@ -12228,7 +12228,7 @@ label {
           backdrop-filter: blur(10px);
   padding: 20px 40px;
   border-radius: 20px;
-  width: 70%;
+  width: 90%;
 }
 .countdown-container #countdown {
   font-size: 20px;
@@ -12242,7 +12242,7 @@ label {
 .countdown-container h2, .countdown-container .h2 {
   position: relative;
   z-index: 2;
-  font-size: 16px;
+  font-size: 24px;
   line-height: 30px;
   font-weight: 700;
   text-transform: uppercase;
@@ -12252,6 +12252,7 @@ label {
 }
 .countdown-container h3, .countdown-container .h3 {
   color: black;
+  text-align: center;
 }
 .countdown-container .car-ended {
   font-size: 24px;
