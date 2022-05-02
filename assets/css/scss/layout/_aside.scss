@@ -93,27 +93,27 @@ aside {
 	justify-content: center;
 	height: $tabs-height;
 	width: auto;
-	background: $bc-primary;
+	background: white;
 	cursor: pointer;
 	text-decoration: none;
 	img {
 		height: 36px;
-		filter: invert(100%);
+		filter: $filter-primary;
 	}
 	span {
-		color: white;
+		color: $bc-primary;
 		font-size: 12px;
 		margin: 10px auto 0;
 		padding: 0 10px;
 		text-align: center;
 	}
 	&.active {
-		background: white;
+		background: $bc-primary;
 		img {
-			filter: $filter-primary;
+			filter: invert(100%);
 		}
 		span {
-			color: $bc-primary;
+			color: white;
 		}
 	}
 }
