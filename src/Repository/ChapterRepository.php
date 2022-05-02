@@ -22,19 +22,15 @@ class ChapterRepository extends ServiceEntityRepository
     // /**
     //  * @return Chapter[] Returns an array of Chapter objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findByDate()
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+            ->orderBy('c.dateStart', 'ASC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Chapter

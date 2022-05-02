@@ -9,9 +9,8 @@
         {% if websiteData.websiteConfig.event != null and websiteData.websiteConfig.event.active == 0 and websiteData.websiteConfig.event.status != 2 %}
             <div class="waiting-block">
                 <div class="countdown-container">
-                    <h2>{{ websiteData.websiteConfig.event }}</h2>
-                    <h3>RDV {{ websiteData.websiteConfig.event.dateStart|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") }} à {{ websiteData.websiteConfig.event.dateStart|date('H')}}H{{ websiteData.websiteConfig.event.dateStart|date('i') }}</h3>
-                    <label id="countdown"></label>
+                    <h2>Convention Particuliers</h2>
+                    <h3>Mercredi 4 mai 2022</h3>
                 </div>
 
                 <img src="img/default/waiting-bg.jpg" alt="">

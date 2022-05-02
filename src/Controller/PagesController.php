@@ -3,15 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Page;
-use App\Entity\Event;
-use App\Entity\Answer;
-use App\Entity\PollVote;
-use App\Entity\Question;
-use App\Entity\PageConfig;
 use App\Repository\PollRepository;
 use App\Repository\EventRepository;
 use App\Repository\VideoRepository;
-use App\Entity\GeneralConfiguration;
 use App\Repository\ModuleRepository;
 use App\Repository\ContestRepository;
 use App\Repository\CategoryRepository;
@@ -19,10 +13,7 @@ use App\Repository\PartnersRepository;
 use App\Repository\PollVoteRepository;
 use App\Repository\QuestionRepository;
 use App\Repository\ProgrammeRepository;
-use App\Repository\PageConfigRepository;
 use App\Repository\PollOptionRepository;
-use Symfony\Component\HttpFoundation\Cookie;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\GeneralConfigurationRepository;
