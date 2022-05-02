@@ -12525,8 +12525,7 @@ label {
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  -moz-column-gap: 30px;
-       column-gap: 30px;
+  gap: 30px;
 }
 .chapters-wrapper-home .chapter-main-wrapper .chapter-date-wrapper, .chapters-wrapper-event .chapter-main-wrapper .chapter-date-wrapper {
   display: flex;
