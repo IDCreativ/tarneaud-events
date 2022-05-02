@@ -22,8 +22,8 @@ label {
         font-size: 20px;
         font-weight: 300;
         text-transform: uppercase;
-        color: white;
-        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+        color: black;
+        // text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
         span {
             font-size: 20px;
         }
@@ -36,12 +36,12 @@ label {
         font-weight: 700;
         text-transform: uppercase;
         margin: 0 auto 20px;
-        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
-        color: white;
+        // text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+        color: black;
         text-align: center;
     }
     h3 {
-        color: white;
+        color: black;
     }
     .car-ended {
         font-size: 24px;
