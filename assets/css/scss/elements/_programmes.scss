@@ -57,7 +57,7 @@
             border: 1px solid $border-light;
             border-radius: $bc-radius;
             .chapter-date-start, .chapter-date-end {
-                color: $bc-third;
+                color: $bc-primary;
                 font-size: 18px;
                 font-weight: 800;
             }
@@ -221,7 +221,7 @@
                 border: 1px solid $border-light;
                 border-radius: $bc-radius;
                 .chapter-date-start, .chapter-date-end {
-                    color: $bc-third;
+                    color: $bc-primary;
                     font-size: 18px;
                     font-weight: 800;
                 }

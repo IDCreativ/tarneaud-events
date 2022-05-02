@@ -12049,7 +12049,7 @@ footer .development_by img {
   align-items: center;
   background: white;
   color: #008ed5;
-  border-radius: 6px 0 0 6px;
+  border-radius: 0 6px 6px 0;
 }
 #aside-toggle:hover {
   cursor: pointer;
@@ -12058,6 +12058,7 @@ footer .development_by img {
   left: -51px;
   background: white;
   border: 1px solid #dee2e6;
+  border-radius: 6px 0 0 6px;
 }
 #aside-toggle.aside-opened i {
   transform: rotate(0deg);
@@ -12088,6 +12089,10 @@ aside#sidebar.aside-opened {
 @media screen and (min-width: 576px) {
   #aside-toggle {
     left: -51px;
+    border-radius: 6px 0 0 6px;
+  }
+  #aside-toggle.aside-opened {
+    border-radius: 6px 0 0 6px;
   }
 
   aside {
@@ -12541,7 +12546,7 @@ label {
   border-radius: 22px;
 }
 .chapters-wrapper-home .chapter-main-wrapper .chapter-date-wrapper .chapter-date-start, .chapters-wrapper-home .chapter-main-wrapper .chapter-date-wrapper .chapter-date-end, .chapters-wrapper-event .chapter-main-wrapper .chapter-date-wrapper .chapter-date-start, .chapters-wrapper-event .chapter-main-wrapper .chapter-date-wrapper .chapter-date-end {
-  color: #878787;
+  color: #008ed5;
   font-size: 18px;
   font-weight: 800;
 }
@@ -12704,7 +12709,7 @@ label {
     border-radius: 22px;
   }
   .chapters-wrapper-home .chapter-main-wrapper .chapter-date-wrapper .chapter-date-start, .chapters-wrapper-home .chapter-main-wrapper .chapter-date-wrapper .chapter-date-end, .chapters-wrapper-event .chapter-main-wrapper .chapter-date-wrapper .chapter-date-start, .chapters-wrapper-event .chapter-main-wrapper .chapter-date-wrapper .chapter-date-end {
-    color: #878787;
+    color: #008ed5;
     font-size: 18px;
     font-weight: 800;
   }
