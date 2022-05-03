@@ -12167,7 +12167,6 @@ aside#sidebar.aside-opened {
 }
 .sidebar .tab-content-wrapper {
   height: calc(100vh - 132px);
-  padding-bottom: 80px;
   overflow-y: scroll;
 }
 .sidebar .tab-content-wrapper-program {
@@ -12406,6 +12405,9 @@ label {
 .question span {
   color: #878787;
   font-weight: 300;
+}
+.question:last-child {
+  margin-bottom: 80px;
 }
 
 .answer {

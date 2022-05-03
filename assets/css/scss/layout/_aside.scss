@@ -132,9 +132,6 @@ aside {
 .sidebar {
 	.tab-content-wrapper {
 		height: $mobile-tab-questions-height;
-		padding-bottom: $questions-form-height;
-		// height: 100%;
-		// margin-bottom: $questions-form-height;
 		overflow-y: scroll;
 	}
 	.tab-content-wrapper-program {
