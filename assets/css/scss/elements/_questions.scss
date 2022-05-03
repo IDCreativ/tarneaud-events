@@ -30,6 +30,7 @@
     }
 }
 .qa-form {
+    height: $questions-form-height;
     form {
         position: absolute;
         bottom: 0;

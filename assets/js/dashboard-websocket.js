@@ -244,7 +244,7 @@ var receiveQuestion = function (obj) {
 		createdReceiver.id = "question-card-" + objReceived.questionId;
 		createdReceiver.className = "col-md-6 mb-4 question-card";
 		createdReceiver.innerHTML += `
-            <div class="card" id="card-${objReceived.questionId}">
+            <div class="card shadow-sm" id="card-${objReceived.questionId}">
                 <div class="card-header d-flex">
                     <span class="me-auto">${objReceived.questionPrenom} ${objReceived.questionNom}</span>
                     

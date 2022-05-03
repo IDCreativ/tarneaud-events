@@ -12421,6 +12421,9 @@ label {
   transform: rotate(90deg);
 }
 
+.qa-form {
+  height: 80px;
+}
 .qa-form form {
   position: absolute;
   bottom: 0;
