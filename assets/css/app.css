@@ -12425,15 +12425,14 @@ label {
 }
 
 .qa-form {
-  position: relative;
-  height: 80px;
-  background-color: white;
-}
-.qa-form form {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
+  height: 80px;
+  background-color: white;
+}
+.qa-form form {
   display: flex;
   justify-content: center;
   max-width: 100%;

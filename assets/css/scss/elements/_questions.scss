@@ -36,14 +36,14 @@
 //     padding-bottom: $questions-form-height;
 // }
 .qa-form {
-    position: relative;
-    height: $questions-form-height;
-    background-color: white;
-    form {
-        position: absolute;
+    position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
+    height: $questions-form-height;
+    background-color: white;
+    form {
+        
         display: flex;
         justify-content: center;
         max-width: 100%;
