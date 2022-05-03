@@ -144,6 +144,7 @@ var changeQuestionStatus = function (status) {
 		"question-" + statusReceived.questionId
 	);
 	if (questionToUpdate) {
+		console.log(statusReceived.questionStatus);
 		if (statusReceived.questionStatus == true) {
 			questionToUpdate.style.display = "block";
 		} else {
@@ -319,12 +320,14 @@ var changeVideoStatus = function (videoStatus) {
         `;
 	} else if (videoStatusReceived.eventVideo == false) {
 		createdEventReceiver.innerHTML = `
-            <div class="waiting-block">
-                <div id="disclaimer" class="alert alert-danger text-center" role="alert">
-                    De retour prochainement.
-                </div>
-                <img src="img/default/waiting-bg.jpg" alt="">
-            </div>
+			<div class="waiting-block">
+				<div class="countdown-container">
+					<h2>Convention Particuliers</h2>
+					<h3>Mercredi 4 mai 2022</h3>
+				</div>
+
+				<img src="img/default/waiting-bg.jpg" alt="">
+			</div>
         `;
 	} else {
 		console.log("Tous les autres cas");
@@ -465,7 +468,7 @@ function recordQuestion(msgObj) {
 
 		$("#question-sent").toast("show");
 		$("#js-question-sent").html(
-			"Votre question a bien été envoyée. Si vous n'avez pas la réponse durant la web-conférence, vous serez recontacté par e-mail ou par téléphone."
+			"Votre question a bien été envoyée."
 		);
 	}
 }
