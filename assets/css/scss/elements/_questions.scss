@@ -29,6 +29,9 @@
         transform: rotate(90deg);
     }
 }
+#js-questions {
+    padding-bottom: $questions-form-height;
+}
 .qa-form {
     height: $questions-form-height;
     form {
