@@ -260,12 +260,14 @@ var changeEventStatus = function (eventStatus) {
 		document.getElementById("fieldset-qr").disabled = true;
 		var createdEventReceiver = document.getElementById("js-live-container");
 		createdEventReceiver.innerHTML = `
-            <div class="waiting-block">
-                <div id="disclaimer" class="alert alert-danger text-center" role="alert">
-                    De retour prochainement.
-                </div>
-                <img src="img/default/waiting-bg.jpg" alt="">
-            </div>
+			<div class="waiting-block">
+				<div class="countdown-container">
+					<h2>Convention Particuliers</h2>
+					<h3>Mercredi 4 mai 2022</h3>
+				</div>
+
+				<img src="img/default/waiting-bg.jpg" alt="">
+			</div>
         `;
 	} else {
 		if (eventStatusReceived.eventStatus == true) {
@@ -275,12 +277,14 @@ var changeEventStatus = function (eventStatus) {
 		}
 		var createdEventReceiver = document.getElementById("js-live-container");
 		createdEventReceiver.innerHTML = `
-            <div class="waiting-block">
-                <div id="disclaimer" class="alert alert-danger text-center" role="alert">
-                    De retour prochainement.
-                </div>
-                <img src="img/default/waiting-bg.jpg" alt="">
-            </div>
+			<div class="waiting-block">
+				<div class="countdown-container">
+					<h2>Convention Particuliers</h2>
+					<h3>Mercredi 4 mai 2022</h3>
+				</div>
+
+				<img src="img/default/waiting-bg.jpg" alt="">
+			</div>
         `;
 	}
 };
