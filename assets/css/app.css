@@ -12406,6 +12406,9 @@ label {
   color: #878787;
   font-weight: 300;
 }
+.question:last-child {
+  margin-bottom: 80px;
+}
 
 .answer {
   position: relative;
