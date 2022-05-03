@@ -12426,6 +12426,7 @@ label {
 
 .qa-form {
   height: 80px;
+  background-color: white;
 }
 .qa-form form {
   position: absolute;
