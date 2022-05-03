@@ -12167,6 +12167,7 @@ aside#sidebar.aside-opened {
 }
 .sidebar .tab-content-wrapper {
   height: calc(100vh - 132px);
+  padding-bottom: 80px;
   overflow-y: scroll;
 }
 .sidebar .tab-content-wrapper-program {
@@ -12419,10 +12420,6 @@ label {
   font-style: normal;
   font-family: "Font Awesome 5 Pro";
   transform: rotate(90deg);
-}
-
-#js-questions {
-  padding-bottom: 80px;
 }
 
 .qa-form {
