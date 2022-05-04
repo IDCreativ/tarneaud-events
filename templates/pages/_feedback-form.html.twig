@@ -1,0 +1,17 @@
+{{ form_start(form) }}
+    <div class="form-group mb-3">
+			<div class="form-error">
+				{{ form_errors(form.description) }}
+			</div>
+            <label for="exampleFormControlInput1" class="form-label">Votre message</label>
+			<div class="input-group">
+                
+				<span class="input-group-text" id="basic-addon1">
+					<i class="fal fa-comment"></i>
+				</span>
+
+				{{form_widget(form.description, { 'attr' : { 'rows': 12 } }) }}
+			</div>
+		</div>
+    <button class="btn btn-primary">{{ button_label|default('Envoyer') }}</button>
+{{ form_end(form) }}

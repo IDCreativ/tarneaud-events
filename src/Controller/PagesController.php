@@ -3,17 +3,22 @@
 namespace App\Controller;
 
 use App\Entity\Page;
+use App\Entity\Feedback;
+use App\Form\FeedbackType;
+use App\Repository\PageRepository;
 use App\Repository\PollRepository;
 use App\Repository\EventRepository;
 use App\Repository\VideoRepository;
 use App\Repository\ModuleRepository;
 use App\Repository\ContestRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\FeedbackRepository;
 use App\Repository\PartnersRepository;
 use App\Repository\PollVoteRepository;
 use App\Repository\QuestionRepository;
 use App\Repository\ProgrammeRepository;
 use App\Repository\PollOptionRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\GeneralConfigurationRepository;
@@ -47,8 +52,7 @@ class PagesController extends AbstractController
         PollVoteRepository $pollVoteRepository,
         ContestRepository $contestRepository,
         ModuleRepository $moduleRepository
-    )
-    {
+    ) {
         $this->generalConfigurationRepository = $generalConfigurationRepository;
         $this->videoRepository = $videoRepository;
         $this->questionRepository = $questionRepository;
@@ -62,7 +66,7 @@ class PagesController extends AbstractController
         $this->contestRepository = $contestRepository;
         $this->moduleRepository = $moduleRepository;
     }
-    
+
     /**
      * @Route("/", name="home")
      */
@@ -78,14 +82,38 @@ class PagesController extends AbstractController
             'programmes'        => $this->programmeRepository->findBy(['event' => $this->generalConfigurationRepository->findLast()->getEvent()], ['dateStart' => 'asc']),
             'modulesArray'      => $this->generalConfigurationRepository->findLast() ? $this->generalConfigurationRepository->findLast()->getModules() : [],
             'polls'             => $this->pollRepository->findAll(),
-            'questions'         => $this->questionRepository->findBy([], ['id'=>'asc']),
-            'events'            => $this->eventRepository->findBy([], ['id'=>'desc']),
+            'questions'         => $this->questionRepository->findBy([], ['id' => 'asc']),
+            'events'            => $this->eventRepository->findBy([], ['id' => 'desc']),
             'video'             => $this->generalConfigurationRepository->findLast() != null ? $this->videoRepository->findOneByEvent($this->generalConfigurationRepository->findLast()->getEvent()) : "",
             'replays'           => $this->videoRepository->findByType(2),
             'categories'        => $this->categoryRepository->findAll(),
             'partners'          => $this->partnersRepository->findAll(),
             'contests'          => $this->contestRepository->findByEvent($this->generalConfigurationRepository->findLast()->getEvent()),
             'moduleJeu'         => $this->moduleRepository->findOneBy(['slug' => 'jeux-concours']),
+        ]);
+    }
+
+    /**
+     * @Route("/feedback", name="app_feedback", methods={"GET", "POST"})
+     */
+    public function feedback(Request $request, FeedbackRepository $feedbackRepository): Response
+    {
+        $feedback = new Feedback();
+        $form = $this->createForm(FeedbackType::class, $feedback);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $feedbackRepository->add($feedback);
+            $this->addFlash(
+                'success',
+                'Votre message a bien été envoyé. Nous vous remercions pour votre retour.'
+            );
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->renderForm('pages/feedback.html.twig', [
+            'feedback' => $feedback,
+            'form' => $form,
         ]);
     }
 

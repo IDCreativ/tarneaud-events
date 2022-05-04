@@ -19,7 +19,7 @@
 					<a class="nav-link" href="{{ path('dashboard') }}">Tableau de bord</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{ path('contest_index') }}">Jeux-concours</a>
+					<a class="nav-link" href="{{ path('app_feedback_index') }}">Feedbacks</a>
 				</li>
 				{% if app.user and is_granted('ROLE_ADMIN') %}
 					<li class="nav-item dropdown">

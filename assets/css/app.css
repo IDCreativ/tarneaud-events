@@ -11381,6 +11381,10 @@ a:hover {
   transition: 0.32s ease-in-out;
 }
 
+ul {
+  list-style: circle;
+}
+
 .flash-messages {
   position: absolute;
   top: 150px;

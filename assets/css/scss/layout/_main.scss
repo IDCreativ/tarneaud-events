@@ -47,6 +47,14 @@ a {
         transition: $transition;
     }
 }
+
+ul {
+    list-style: circle;
+    // padding: 0 0 0 20px;
+    // margin: 0 0 15px 40px;
+    // border-left: 4px solid $bc-primary;
+}
+
 .flash-messages {
     position: absolute;
     top: 150px;
