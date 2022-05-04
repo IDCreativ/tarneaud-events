@@ -57,9 +57,9 @@ ul {
 
 .flash-messages {
     position: absolute;
-    top: 150px;
+    top: 200px;
     left: 20px;
-    z-index: 100;
+    z-index: 1000;
     animation: flashReveal 0.4s ease-in-out;
 }
 
