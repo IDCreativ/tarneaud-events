@@ -263,8 +263,8 @@ var changeEventStatus = function (eventStatus) {
 		createdEventReceiver.innerHTML = `
 			<div class="waiting-block">
 				<div class="countdown-container">
-					<h2>Convention Particuliers</h2>
-					<h3>Mercredi 4 mai 2022</h3>
+					<h2>Convention Professionnels</h2>
+					<h3>Jeudi 5 mai 2022</h3>
 				</div>
 
 				<img src="img/default/waiting-bg.jpg" alt="">
@@ -280,8 +280,8 @@ var changeEventStatus = function (eventStatus) {
 		createdEventReceiver.innerHTML = `
 			<div class="waiting-block">
 				<div class="countdown-container">
-					<h2>Convention Particuliers</h2>
-					<h3>Mercredi 4 mai 2022</h3>
+					<h2>Convention Professionnels</h2>
+					<h3>Jeudi 5 mai 2022</h3>
 				</div>
 
 				<img src="img/default/waiting-bg.jpg" alt="">
@@ -322,8 +322,8 @@ var changeVideoStatus = function (videoStatus) {
 		createdEventReceiver.innerHTML = `
 			<div class="waiting-block">
 				<div class="countdown-container">
-					<h2>Convention Particuliers</h2>
-					<h3>Mercredi 4 mai 2022</h3>
+					<h2>Convention Professionnels</h2>
+					<h3>Jeudi 5 mai 2022</h3>
 				</div>
 
 				<img src="img/default/waiting-bg.jpg" alt="">
