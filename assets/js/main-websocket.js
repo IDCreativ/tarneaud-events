@@ -99,16 +99,12 @@ var receiveQuestion = function (obj) {
 	var questionReceiverFront = document.getElementById("js-questions");
 	var objReceived = JSON.parse(obj);
 	if (questionReceiverFront) {
-		questionReceiverFront.innerHTML +=
-			"<div class='question' style='display: " +
-			questionStatus +
-			";' id='question-" +
-			objReceived.questionId +
-			"'><span>" +
-			objReceived.questionSent +
-			"</span><div id='js-answers-" +
-			objReceived.questionId +
-			"'></div>";
+		questionReceiverFront.innerHTML += `
+			<div class="question" style="display: ${questionStatus};" id="question-${objReceived.questionId}">
+				<span>${objReceived.questionSent}</span>
+				<div id='js-answers-${objReceived.questionId}">
+			</div>
+		`;
 	}
 };
 
@@ -145,7 +141,7 @@ var changeQuestionStatus = function (status) {
 	);
 	if (questionToUpdate) {
 		console.log(statusReceived.questionStatus);
-		if (statusReceived.questionStatus == true) {
+		if (statusReceived.questionStatus === true) {
 			questionToUpdate.style.display = "block";
 		} else {
 			questionToUpdate.style.display = "none";

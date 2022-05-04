@@ -12406,6 +12406,9 @@ label {
   color: #878787;
   font-weight: 300;
 }
+.question:last-child {
+  margin-bottom: 80px;
+}
 
 .answer {
   position: relative;
@@ -12421,11 +12424,15 @@ label {
   transform: rotate(90deg);
 }
 
-.qa-form form {
+.qa-form {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
+  height: 80px;
+  background-color: white;
+}
+.qa-form form {
   display: flex;
   justify-content: center;
   max-width: 100%;
