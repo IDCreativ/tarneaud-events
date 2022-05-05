@@ -1,0 +1,45 @@
+{% extends 'pages_base.html.twig' %}
+
+{% block title %}
+	Feedback
+	-
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<main>
+		<section>
+			<div class="container pt-5">
+				<div class="row">
+					<div class="col">
+						<h1 class="mb-3">Convention des Entreprises, votre feedback</h1>
+						<p>
+							Nous aimerions disposer de votre feedback sur les points suivants :
+						</p>
+						<ul>
+							<li>Le lieu,</li>
+							<li>L’accueil,</li>
+							<li>Les sujets traités en plénière,</li>
+							<li>Les ateliers,</li>
+							<li>Le temps des questions réponses,</li>
+							<li>Le déjeuner,</li>
+							<li>Les attractions au Futuroscope,</li>
+							<li>Des remarques ou suggestions.</li>
+						</ul>
+						<p>Merci pour vos réponses qui resteront anonymes.</p>
+						<p>La Dircom</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="pb-5">
+			<div class="container py-2">
+				<div class="row">
+					<div class="col">
+						{{ include('pages/_feedback-form.html.twig') }}
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+{% endblock %}

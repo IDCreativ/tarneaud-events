@@ -144,6 +144,31 @@ class PagesController extends AbstractController
     }
 
     /**
+     * @Route("/feedback-entreprises", name="app_feedback_entreprises", methods={"GET", "POST"})
+     */
+    public function app_feedback_entreprises(Request $request, FeedbackRepository $feedbackRepository): Response
+    {
+        $feedback = new Feedback();
+        $form = $this->createForm(FeedbackType::class, $feedback);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $feedback->setType(2);
+            $feedbackRepository->add($feedback);
+            $this->addFlash(
+                'success',
+                'Votre message a bien été envoyé. Nous vous remercions pour votre retour.'
+            );
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->renderForm('pages/feedback-entreprises.html.twig', [
+            'feedback' => $feedback,
+            'form' => $form,
+        ]);
+    }
+
+    /**
      * @Route("/pages/{slug}", name="page_single", methods={"GET"})
      */
     public function page_single(Page $page): Response
