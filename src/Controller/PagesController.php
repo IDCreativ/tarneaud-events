@@ -137,7 +137,7 @@ class PagesController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        return $this->renderForm('pages/feedback.html.twig', [
+        return $this->renderForm('pages/feedback-pro.html.twig', [
             'feedback' => $feedback,
             'form' => $form,
         ]);
