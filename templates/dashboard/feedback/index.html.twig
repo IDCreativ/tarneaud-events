@@ -23,10 +23,11 @@
 				<div class="card shadow-sm">
 					<div class="card-body">
 						{% if feedbacks|length > 0 %}
-							<table class="table table-bordered">
+							<table id="feedback-table" class="table table-bordered">
 								<thead>
 									<tr>
 										<th>#</th>
+										<th>Type</th>
 										<th>Feedback</th>
 										<th>Actions</th>
 									</tr>
@@ -35,6 +36,13 @@
 									{% for feedback in feedbacks %}
 										<tr>
 											<td>{{ feedback.id }}</td>
+											<td>
+												{% if feedback.type == 0 %}
+													Particuliers
+												{% elseif feedback.type == 1 %}
+													Professionnels
+												{% endif %}
+											</td>
 											<td>{{ feedback.description }}</td>
 											<td>
                                                 <a class="btn btn-outline-success btn-action" href="{{ path('app_feedback_show', {'id': feedback.id}) }}"><i class="fal fa-eye fa-fw"></i></a>
@@ -61,4 +69,42 @@
 			</div>
 		</div>
 	</div>
+	<script>
+$(document).ready(function() {
+    $('#feedback-table').DataTable( {
+        "order": [[ 0, "desc" ]],
+        "pageLength": 10,
+        "language": {
+                "sEmptyTable":     "Aucune donnée disponible dans le tableau",
+                "sInfo":           "Affichage de l'élément _START_ à _END_ sur _TOTAL_ éléments",
+                "sInfoEmpty":      "Affichage de l'élément 0 à 0 sur 0 élément",
+                "sInfoFiltered":   "(filtré à partir de _MAX_ éléments au total)",
+                "sInfoPostFix":    "",
+                "sInfoThousands":  ",",
+                "sLengthMenu":     "Afficher _MENU_ éléments",
+                "sLoadingRecords": "Chargement...",
+                "sProcessing":     "Traitement...",
+                "sSearch":         "Rechercher :",
+                "sZeroRecords":    "Aucun élément correspondant trouvé",
+                "oPaginate": {
+							"sFirst":    "Premier",
+							"sLast":     "Dernier",
+							"sNext":     "Suivant",
+							"sPrevious": "Précédent"
+							},
+                "oAria": {
+						"sSortAscending":  ": activer pour trier la colonne par ordre croissant",
+						"sSortDescending": ": activer pour trier la colonne par ordre décroissant"                  
+                },
+                "select": {
+						"rows": {
+                            "_": "%d lignes sélectionnées",
+                            "0": "Aucune ligne sélectionnée",
+                            "1": "1 ligne sélectionnée"
+                } 
+      		}
+    	}
+    });
+});
+</script>
 {% endblock %}

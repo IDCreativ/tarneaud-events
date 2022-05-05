@@ -22,6 +22,11 @@ class Feedback
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $type = 0;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +40,18 @@ class Feedback
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getType(): ?int
+    {
+        return $this->type;
+    }
+
+    public function setType(int $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

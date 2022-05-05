@@ -103,6 +103,32 @@ class PagesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $feedback->setType(0);
+            $feedbackRepository->add($feedback);
+            $this->addFlash(
+                'success',
+                'Votre message a bien été envoyé. Nous vous remercions pour votre retour.'
+            );
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->renderForm('pages/feedback.html.twig', [
+            'feedback' => $feedback,
+            'form' => $form,
+        ]);
+    }
+
+    /**
+     * @Route("/feedback-pro", name="app_feedback_pro", methods={"GET", "POST"})
+     */
+    public function app_feedback_pro(Request $request, FeedbackRepository $feedbackRepository): Response
+    {
+        $feedback = new Feedback();
+        $form = $this->createForm(FeedbackType::class, $feedback);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $feedback->setType(1);
             $feedbackRepository->add($feedback);
             $this->addFlash(
                 'success',
